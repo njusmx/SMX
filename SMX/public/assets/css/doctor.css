@@ -1,0 +1,80 @@
+.search{
+    -webkit-appearance: none !important;
+    color: #282323;
+    outline: 0;
+    height: 30px;
+    width: 380px;
+    padding: 7px 15px;
+    font-size: 0.75em;
+    font-weight: normal;
+    vertical-align: top;
+    background-color: #fff;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    border-radius: 30px;
+    border: none;
+    transition: background 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    margin: 16px 0 0 20px;
+    position: relative;
+}
+
+.doctor-search{
+    /*position: absolute;*/
+    top: 27px;
+    right: 5px;
+    background: none;
+    padding: 23px 10px!important;
+    font-size: 12px;
+    line-height: 1.5;
+    border: none;
+    font-weight: normal;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
+    transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
+}
+
+.upbutton{
+    color: #fff;
+    background-color: #556b8d;
+    border: none;
+    font-size: 15px;
+    font-weight: normal;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    padding: 8px 14px;
+    margin-bottom: 5px;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
+    transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
+}
+.pushedbutton{
+    color: #fff;
+    background-color: #909aa0;
+    border: none;
+    font-size: 15px;
+    font-weight: normal;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    padding: 8px 14px;
+    margin-bottom: 5px;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
+    transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
+}

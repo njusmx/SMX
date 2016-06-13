@@ -1,0 +1,43 @@
+#label1 
+{
+
+background-image:url("../img/stat.png") !important;
+background-repeat: no-repeat;
+background-position:-9px 0px;
+width:290px;
+height:320px;
+margin:0 auto; 
+}
+
+#label2
+{
+
+background-image:url("../img/stat.png") !important;
+background-repeat: no-repeat;
+background-position:-306px 0px;
+width:290px;
+height:320px;
+margin:0 auto; 
+}
+
+#label3
+{
+
+background-image:url("../img/stat.png") !important;
+background-repeat: no-repeat;
+background-position:-606px 0px;
+width:365px;
+height:320px;
+margin:0 auto; 
+}
+
+#label4
+{
+
+background-image:url("../img/stat.png") !important;
+background-repeat: no-repeat;
+background-position:-906px 0px;
+width:365px;
+height:320px;
+margin:0 auto; 
+}
