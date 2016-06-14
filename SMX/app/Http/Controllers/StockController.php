@@ -15,11 +15,17 @@ class StockController extends Controller
         $result = DB::select('select * from categories');
         return view('JXC.stock.index', ['name' => Auth::user()->username, 'categories' => $result]);
     }
-
+    //库存盘点
     public function check()
     {
         $result = DB::select('select * from commodities');
         return view('JXC.stock.check', ['name' => Auth::user()->username, 'commodities' => $result]);
+    }
+    //库存查看
+    public function show()
+    {
+        $result = DB::select('select * from commodities');
+        return view('JXC.stock.show', ['name' => Auth::user()->username, 'commodities' => $result]);
     }
 
     public function getCorrect()

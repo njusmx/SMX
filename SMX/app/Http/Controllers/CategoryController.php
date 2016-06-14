@@ -29,7 +29,7 @@ class CategoryController extends Controller
 
     public function getAdd() {
         $result = DB::select('select * from categories');
-        return view('JXC.stock.addcategory',['name' => Auth::user()->username, 'categories' => $result]);
+        return view('JXC.stock.index',['name' => Auth::user()->username, 'categories' => $result]);
     }
 
     public function postAdd(Request $req) {
@@ -42,7 +42,7 @@ class CategoryController extends Controller
             $ca->name = $req->get('name');
             $ca->parent = $req->get('parent');
             $ca->save();
-            return Redirect::route('stock');
+            return Redirect::route('addca');
         }
         $parent = DB::select('select * from categories where id = ?', [$req->get('parent')]);
         if($parent != null){
@@ -52,10 +52,10 @@ class CategoryController extends Controller
             $ca->save();
 
         }else {
-            return Redirect::route('addca')
+            return Redirect::route('stock')
                 ->withInput()
                 ->withErrors('父类别不存在！');
         }
-        return Redirect::route('stock');
+        return Redirect::route('addca');
     }
 }

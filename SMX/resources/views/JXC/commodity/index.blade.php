@@ -88,31 +88,31 @@
         <nav>
             <h5 class="sidebar-header">Navigation</h5>
             <ul class="nav nav-pills nav-stacked">
-                <li class="nav-dropdown">
+                <li class="nav-dropdown open active">
                     <a href="#" title="商品管理">
                         <i class="fa fa-fw fa-shopping-cart"></i> 商品管理
                     </a>
                     <ul class=" nav-sub">
-                        <li class="active">
+                        <li>
                             <a  href="/stock" title="商品分类" >商品分类</a>
                         </li>
                         <li>
-                            <a  href="/commodity" title="商品管理">商品管理</a>
+                            <a  href="/expert/suggestion/index" title="商品管理">商品管理</a>
                         </li>
                     </ul>
                 </li>
-                <li class=" nav-dropdown open active">
+                <li class=" nav-dropdown ">
                     <a href="#" title="库存管理" >
                         <i class="fa  fa-fw fa-tachometer"></i>库存管理
                     </a>
                     <ul class=" nav-sub">
-                        <li>
+                        <li class="active">
                             <a  href="/stock/check" title="库存盘点">库存盘点</a>
                         </li>
                         <li >
                             <a  href="/stock/show" title="库存查看">库存查看</a>
                         </li>
-                        <li class="active">
+                        <li >
                             <a  href="/stock/correct" title="库存修正">库存修正</a>
                         </li>
                         <li >
@@ -128,8 +128,8 @@
     <!--main content start-->
     <section class="main-content-wrapper">
         <div class="pageheader">
-            <h1>库存管理</h1>
-            <p class="description">这里展示库存数据 </p>
+            <h1>商品管理</h1>
+            <p class="description">这里展示商品数据 </p>
         </div>
         <section id="main-content" class="animated fadeInUp">
 
@@ -140,41 +140,65 @@
                         <div class="panel-body">
                             <div class="tab-wrapper tab-primary">
                                 <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#less" data-toggle="tab">库存报损单</a>
+                                    <li class="active"><a href="#showCommodity" data-toggle="tab">商品信息</a>
                                     </li>
-                                    <li ><a href="#more" data-toggle="tab">库存报溢单</a>
+                                    <li><a href="#addCommodity" data-toggle="tab">添加商品</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="less">
+
+                                    <div class="tab-pane" id="addCommodity">
                                         <section class="panel">
                                             <div class="panel-body">
-                                                <form class="form-horizontal" role="form" method="POST" action="{{ url('correct')}}">
-                                                    <div class="col-md-1">
+                                                <form class="form-horizontal" role="form" method="POST" action="{{ url('/commodity/add')}}">
+                                                    <div class="col-md-offset-1 col-md-3">
                                                         <div class="form-group">
                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                         </div>
-
                                                     </div>
-                                                    <div class="col-md-7">
+                                                    <div class="col-md-offset-1 col-md-7">
+
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">商品ID</label>
+                                                            <label class="col-sm-3 control-label">商品名称</label>
                                                             <div class="col-sm-6">
-                                                                <input type="text" name="id" class="form-control" placeholder="Commodity ID" >
+                                                                <input type="text" name="name" class="form-control" placeholder="Commodity Name" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">真实数量</label>
+                                                            <label class="col-sm-3 control-label">型号</label>
                                                             <div class="col-sm-6">
-                                                                <input type="text" name="number" class="form-control" placeholder="Actucal Number" >
+                                                                <input type="text" name="type" class="form-control" placeholder="Commodity Type">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">商品类别</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="category" class="form-control" placeholder="Parent Category ID">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">默认进价</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="avgin" class="form-control" placeholder="Purchase Price">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">默认售价</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="avgout" class="form-control" placeholder="Sale Price">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">报警数量</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="alarm" class="form-control" placeholder="Alarm Number">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="col-md-offset-6 col-md-2 col-sm-offset-7 col-sm-10">
-                                                                <button type="submit" class="btn btn-primary">创建单据</button>
+                                                                <button type="submit" class="btn btn-primary">添加分类</button>
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                 </form>
 
@@ -182,40 +206,59 @@
 
                                         </section>
                                     </div>
-                                    <div class="tab-pane" id="more">
+
+                                    <div class="tab-pane active" id="showCommodity">
                                         <section class="panel">
                                             <div class="panel-body">
-                                                <form class="form-horizontal" role="form" method="POST" action="{{ url('correct')}}">
-                                                    <div class="col-md-1">
-                                                        <div class="form-group">
-                                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                        </div>
+                                                <div class="col-md-6">
+                                                    <div class="panel panel-default">
 
+                                                        <div class="panel-body">
+                                                            <table class="table table-striped">
+                                                                <thead>
+                                                                <tr>
+                                                                    <td>编号</td>
+                                                                    <td>名称</td>
+                                                                    <td>型号</td>
+                                                                    <td>数量</td>
+                                                                    <td>进价</td>
+                                                                    <td>售价</td>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                @if (count($commodities))
+                                                                    @foreach ($commodities as $commodity)
+                                                                        <tr>
+                                                                            <td>{{ $commodity->id }}</td>
+                                                                            <td>{{ $commodity->name }}</td>
+                                                                            <td>{{ $commodity->type }}</td>
+                                                                            <td>{{ $commodity->number }}</td>
+                                                                            <td>{{ $commodity->avgin }}</td>
+                                                                            <td>{{ $commodity->avgout }}</td>
+                                                                            <td>
+                                                                                <form action="{{ url('commodity/edit/'.$commodity->id) }}" style='display: inline' method="post">
+                                                                                    <input type="hidden" name="_method" value="GET">
+                                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                                    <button class="btn btn-sm btn-info">修改商品</button>
+                                                                                </form>
+                                                                                <form action="{{ url('commodity/delete/'.$commodity->id) }}" style='display: inline' method="post">
+                                                                                    <input type="hidden" name="_method" value="DELETE">
+                                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                                    <button class="btn btn-sm btn-danger" onclick="return confirm('确定删除?')">删除商品</button>
+                                                                                </form>
+
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endforeach
+                                                                @else
+                                                                    <h1>没有用户名单,请管理员添加</h1>
+                                                                @endif
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-7">
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">商品ID</label>
-                                                            <div class="col-sm-6">
-                                                                <input type="text" name="id" class="form-control" placeholder="Commodity ID" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">真实数量</label>
-                                                            <div class="col-sm-6">
-                                                                <input type="text" name="number" class="form-control" placeholder="Actucal Number" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <div class="col-md-offset-6 col-md-2 col-sm-offset-7 col-sm-10">
-                                                                <button type="submit" class="btn btn-primary">创建单据</button>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </form>
-
+                                                </div>
                                             </div>
-
                                         </section>
                                     </div>
                                 </div>

@@ -62,275 +62,188 @@
                 <i class="on border-dark animated bounceIn"></i>
             </div>
             <div class="profile-body dropdown">
-                <h4>YuanRui</h4>
-                <small class="title">天才</small>
+                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>KC-00001<span class="caret"></span></h4></a>
+                <small class="title">库存管理人员</small>
+                <h4>业绩点:<span>80</span></h4>
+
+
+                <ul class="dropdown-menu animated fadeInRight" role="menu">
+                    <br>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span class="icon"><i class="fa fa-envelope"></i>
+                            </span>Messages</a>
+                    </li>
+                    <li>
+                        <a href="/logout">
+                            <span class="icon"><i class="fa fa-sign-out"></i>
+                            </span>Logout</a>
+                    </li>
+                    <br>
+
+                </ul>
             </div>
+
         </div>
         <nav>
             <h5 class="sidebar-header">Navigation</h5>
             <ul class="nav nav-pills nav-stacked">
-                <li class=" nav-dropdown open active">
+                <li class="nav-dropdown open active">
+                    <a href="#" title="商品管理">
+                        <i class="fa fa-fw fa-shopping-cart"></i> 商品管理
+                    </a>
+                    <ul class=" nav-sub">
+                        <li>
+                            <a  href="/stock" title="商品分类" >商品分类</a>
+                        </li>
+                        <li>
+                            <a  href="/commodity" title="商品管理">商品管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=" nav-dropdown ">
                     <a href="#" title="库存管理" >
-                        <i class="fa  fa-fw fa-tachometer"></i>
+                        <i class="fa  fa-fw fa-tachometer"></i>库存管理
                     </a>
                     <ul class=" nav-sub">
                         <li class="active">
-                            <a  href="/sports/index" title="运动管理">运动管理</a>
+                            <a  href="/stock/check" title="库存盘点">库存盘点</a>
                         </li>
                         <li >
-                            <a  href="/body/index" title="健康履历">健康履历</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class=" nav-dropdown">
-                    <a href="#" title="活动管理">
-                        <i class="fa fa-fw fa-flag"></i> 活动管理
-                    </a>
-                    <ul class=" nav-sub">
-                        <li >
-                            <a  href="/activity" title="活动广场">活动广场</a>
+                            <a  href="/stock/show" title="库存查看">库存查看</a>
                         </li>
                         <li >
-                            <a  href="/activity/mine" title="我的活动">我的活动</a>
+                            <a  href="/stock/correct" title="库存修正">库存修正</a>
+                        </li>
+                        <li >
+                            <a  href="/stock/inform" title="库存通知">库存通知</a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-dropdown">
-                    <a href="#" title="兴趣组" data-toggle="collapse">
-                        <i class="fa fa-fw fa-paper-plane-o"></i> 兴趣组
-                    </a>
-                    <ul class="nav-sub">
-                        <li class=>
-                            <a  href="/group" title="我的兴趣组">我的兴趣组</a>
-                        </li>
-
-                    </ul>
-                </li>
-                <li class=" nav-dropdown">
-                    <a href="/friends/index" title="朋友圈">
-                        <i class="fa fa-user fa-fw"></i> 朋友圈
-                    </a>
-                </li>
-                <li class="nav-dropdown">
-                    <a href="/shop" title="健货商城" data-toggle="collapse">
-                        <i class="fa fa-fw fa-shopping-cart"></i> 健货商城
-                    </a>
-                </li>
-                <li class="nav-dropdown">
-                    <a href="#" title="专业咨询" data-toggle="collapse">
-                        <i class="fa fa-fw fa-comment"></i> 专业咨询
-                    </a>
-                    <ul class=" nav-sub">
-                        <li>
-                            <a  href="/expert/index" title="医生私教" >医生私教</a>
-                        </li>
-                        <li>
-                            <a  href="/expert/suggestion/index" title="建议管理">建议管理</a>
-                        </li>
-                    </ul>
-                </li>
-
-
             </ul>
         </nav>
-        <h5 class="sidebar-header">Account Settings</h5>
-        <div class="setting-list">
-            <div class="row">
-                <div class="col-xs-8">
-                    <label for="check1" class="control-label">Share your status</label>
-                </div>
-                <div class="col-xs-4">
-                    <input type="checkbox" class="js-switch" checked id="check1" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-8">
-                    <label for="check2" class="control-label">Push Notifications</label>
-                </div>
-                <div class="col-xs-4">
-                    <input type="checkbox" class="js-switch" id="check2" />
-                </div>
-            </div>
-        </div>
     </aside>
     <!--sidebar left end-->
 
     <!--main content start-->
     <section class="main-content-wrapper">
         <div class="pageheader">
-            <h1>运动管理</h1>
-            <p class="description">这里展示每日运动数据 </p>
-            <div class="breadcrumb-wrapper hidden-xs">
-                <span class="label">You are here:</span>
-                <ol class="breadcrumb">
-                    <li class="active">Dashboard</li>
-                </ol>
-            </div>
+            <h1>商品管理</h1>
+            <p class="description">这里展示商品数据 </p>
         </div>
         <section id="main-content" class="animated fadeInUp">
 
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="tab-wrapper tab-primary">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#showCategory" data-toggle="tab">商品分类</a>
+                                    </li>
+                                    <li><a href="#addCategory" data-toggle="tab">添加分类</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+
+                                    <div class="tab-pane" id="addCategory">
+                                        <section class="panel">
+                                            <div class="panel-body">
+                                                <form class="form-horizontal" role="form" method="POST" action="{{ url('/stock/category/add')}}">
+                                                    <div class="col-md-offset-1 col-md-3">
+                                                        <div class="form-group">
+                                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-offset-1 col-md-7">
+
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">类别名称</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="name" class="form-control" placeholder="Category Name" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">父类别id</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="parent" class="form-control" placeholder="Parent Category ID">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-offset-6 col-md-2 col-sm-offset-7 col-sm-10">
+                                                                <button type="submit" class="btn btn-primary">添加分类</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+
+                                        </section>
+                                    </div>
+
+                                    <div class="tab-pane active" id="showCategory">
+                                        <section class="panel">
+                                            <div class="panel-body">
+                                                <div class="col-md-6">
+                                                    <div class="panel panel-default">
+
+                                                        <div class="panel-body">
+                                                            <table class="table table-striped">
+                                                                <thead>
+                                                                <tr>
+                                                                    <td>类别编号</td>
+                                                                    <td>类别名称</td>
+                                                                    <td>父类别编号</td>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                @if (count($categories))
+                                                                    @foreach ($categories as $category)
+                                                                        <tr>
+                                                                            <td>{{ $category->id }}</td>
+                                                                            <td>{{ $category->name }}</td>
+                                                                            <td>{{ $category->parent }}</td>
+                                                                            <td>
+                                                                                <form action="{{ url('stock/category/edit/'.$category->id) }}" style='display: inline' method="post">
+                                                                                    <input type="hidden" name="_method" value="GET">
+                                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                                    <button class="btn btn-sm btn-info">修改类别</button>
+                                                                                </form>
+                                                                                <form action="{{ url('stock/category/delete/'.$category->id) }}" style='display: inline' method="post">
+                                                                                    <input type="hidden" name="_method" value="DELETE">
+                                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                                    <button class="btn btn-sm btn-danger" onclick="return confirm('确定删除?')">删除类别</button>
+                                                                                </form>
+
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endforeach
+                                                                @else
+                                                                    <h1>没有用户名单,请管理员添加</h1>
+                                                                @endif
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
     </section>
 
     <!--main content end-->
 </section>
-<!--sidebar right start-->
-<aside id="sidebar-right">
-    <h4 class="sidebar-title">contact List</h4>
-    <div id="contact-list-wrapper">
-        <div class="heading">
-            <ul>
-                <li class="new-contact"><a href="javascript:void(0)"><i class="fa fa-plus"></i></a>
-                </li>
-                <li>
-                    <input type="text" class="search" placeholder="Search">
-                    <button type="submit" class="btn btn-sm btn-search"><i class="fa fa-search"></i>
-                    </button>
-                </li>
-            </ul>
-        </div>
-        <div id="contact-list">
-            <ul>
-                <li>
-                    <div class="row">
-                        <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="/assets/img/avatar3.png" class="img-circle" alt="">
-                          <i class="on animated bounceIn"></i>
-                        </span>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="name">Ashley Bell </div>
-                            <small class="location text-muted"><i class="icon-pointer"></i> Sarasota, FL</small>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="row">
-                        <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="/assets/img/avatar1.png" class="img-circle" alt="">
-                          <i class="on animated bounceIn"></i>
-                        </span>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="name">Brian Johnson </div>
-                            <small class="location text-muted"><i class="icon-pointer"></i> San Francisco, CA</small>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="row">
-                        <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="/assets/img/avatar2.png" class="img-circle" alt="">
-                          <i class="on animated bounceIn"></i>
-                        </span>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="name">Chris Jones </div>
-                            <small class="location text-muted"><i class="icon-pointer"></i> Brooklyn, NY</small>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="row">
-                        <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="/assets/img/avatar4.jpg" class="img-circle" alt="">
-                          <i class="on animated bounceIn"></i>
-                        </span>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="name">Erica Hill </div>
-                            <small class="location text-muted"><i class="icon-pointer"></i> Palo Alto, Ca</small>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="row">
-                        <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="/assets/img/avatar5.png" class="img-circle" alt="">
-                          <i class="away animated bounceIn"></i>
-                        </span>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="name">Greg Smith </div>
-                            <small class="location text-muted"><i class="icon-pointer"></i> London, UK</small>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="row">
-                        <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="/assets/img/avatar6.png" class="img-circle" alt="">
-                          <i class="on animated bounceIn"></i>
-                        </span>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="name">Jason Kendall</div>
-                            <small class="location text-muted"><i class="icon-pointer"></i> New York, NY </small>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="row">
-                        <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="/assets/img/avatar7.png" class="img-circle" alt="">
-                          <i class="on animated bounceIn"></i>
-                        </span>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="name">Kristen Davis </div>
-                            <small class="location text-muted"><i class="icon-pointer"></i> Greenville, SC</small>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="row">
-                        <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="/assets/img/avatar8.png" class="img-circle off" alt="">
-                          <i class="off animated bounceIn"></i>
-                        </span>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="name">Michael Shepard </div>
-                            <small class="location text-muted"><i class="icon-pointer"></i> Vancouver, BC</small>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="row">
-                        <div class="col-md-3">
-                                <span class="avatar">
-                        <img src="/assets/img/avatar9.png" class="img-circle off" alt="">
-                          <i class="off animated bounceIn"></i>
-                        </span>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="name">Paul Allen</div>
-                            <small class="location text-muted"><i class="icon-pointer"></i> Savannah, GA</small>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div id="contact-user">
-            <div class="chat-user active"><span><i class="icon-bubble"></i></span>
-            </div>
-            <div class="email-user"><span><i class="icon-envelope-open"></i></span>
-            </div>
-            <div class="call-user"><span><i class="icon-call-out"></i></span>
-            </div>
-        </div>
-    </div>
-</aside>
-<!--/sidebar right end-->
+
 <!--Config demo-->
 <div id="config" class="config hidden-xs">
     <h4>Settings<a href="javascript:void(0)" class="config-link closed"><i class="icon-settings"></i></a></h4>

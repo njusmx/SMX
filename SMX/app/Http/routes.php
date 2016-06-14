@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+//登录注册登出
 Route::get('login', [
     'as' => 'login', 'uses' => 'LoginController@index']);
 Route::post('login', [
@@ -25,16 +25,32 @@ Route::get('register', [
     'as' => 'register', 'uses' => 'RegisterController@index']);
 Route::post('register', 'RegisterController@postRegister');
 
-//stock manager
+//分类管理
 Route::get('stock', [
     'as' => 'stock', 'uses' => 'StockController@index']);
-Route::resource('stock/category/delete', 'CategoryController');
-Route::resource('stock/category/edit', 'CategoryEditController');
+Route::resource('stock/category/delete', 'CategoryController@destroy');
+Route::get('stock/category/edit/{id}', 'CategoryEditController@index');
+Route::post('stock/category/edit', 'CategoryEditController@modifyCategory');
 Route::get('stock/category/add', [
     'as' => 'addca', 'uses' => 'CategoryController@getAdd']);
 Route::post('stock/category/add', 'CategoryController@postAdd');
+
+//商品管理
+Route::get('commodity', [
+    'as' => 'commodity', 'uses' => 'commodityController@index']);
+Route::resource('commodity/delete', 'commodityController@destroy');
+
+Route::get('commodity/edit/{id}', 'commodityEditController@index');
+Route::post('commodity/edit', 'commodityEditController@modifycommodity');
+Route::get('commodity/add', [
+    'as' => 'addcom', 'uses' => 'commodityController@getAdd']);
+Route::post('commodity/add', 'commodityController@postAdd');
+
+//库存管理
 Route::get('stock/check', [
     'as' => 'check', 'uses' => 'StockController@check']);
+Route::get('stock/show', [
+    'as' => 'show', 'uses' => 'StockController@show']);
 Route::get('stock/correct', [
     'as' => 'correct', 'uses' => 'StockController@getCorrect']);
 Route::post('stock/correct', 'StockController@postCorrect');

@@ -88,7 +88,7 @@
         <nav>
             <h5 class="sidebar-header">Navigation</h5>
             <ul class="nav nav-pills nav-stacked">
-                <li class="nav-dropdown">
+                <li class="nav-dropdown open active">
                     <a href="#" title="商品管理">
                         <i class="fa fa-fw fa-shopping-cart"></i> 商品管理
                     </a>
@@ -101,18 +101,18 @@
                         </li>
                     </ul>
                 </li>
-                <li class=" nav-dropdown open active">
+                <li class=" nav-dropdown ">
                     <a href="#" title="库存管理" >
                         <i class="fa  fa-fw fa-tachometer"></i>库存管理
                     </a>
                     <ul class=" nav-sub">
-                        <li>
+                        <li class="active">
                             <a  href="/stock/check" title="库存盘点">库存盘点</a>
                         </li>
                         <li >
                             <a  href="/stock/show" title="库存查看">库存查看</a>
                         </li>
-                        <li class="active">
+                        <li >
                             <a  href="/stock/correct" title="库存修正">库存修正</a>
                         </li>
                         <li >
@@ -128,8 +128,8 @@
     <!--main content start-->
     <section class="main-content-wrapper">
         <div class="pageheader">
-            <h1>库存管理</h1>
-            <p class="description">这里展示库存数据 </p>
+            <h1>商品管理</h1>
+            <p class="description">这里展示商品数据 </p>
         </div>
         <section id="main-content" class="animated fadeInUp">
 
@@ -140,16 +140,14 @@
                         <div class="panel-body">
                             <div class="tab-wrapper tab-primary">
                                 <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#less" data-toggle="tab">库存报损单</a>
-                                    </li>
-                                    <li ><a href="#more" data-toggle="tab">库存报溢单</a>
+                                    <li class="active"><a href="#updateCategory" data-toggle="tab">修改商品分类</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="less">
+                                    <div class="tab-pane active" id="updateCategory">
                                         <section class="panel">
                                             <div class="panel-body">
-                                                <form class="form-horizontal" role="form" method="POST" action="{{ url('correct')}}">
+                                                <form class="form-horizontal" role="form" method="POST" action="{{ url('/stock/category/edit')}}">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -158,56 +156,21 @@
                                                     </div>
                                                     <div class="col-md-7">
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">商品ID</label>
+                                                            <label class="col-sm-3 control-label">类别名称</label>
                                                             <div class="col-sm-6">
-                                                                <input type="text" name="id" class="form-control" placeholder="Commodity ID" >
+                                                                <input type="hidden" name="id"  value={{$category->id}} >
+                                                                <input type="text" name="name" class="form-control" placeholder="Category Name" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">真实数量</label>
+                                                            <label class="col-sm-3 control-label">父类别id</label>
                                                             <div class="col-sm-6">
-                                                                <input type="text" name="number" class="form-control" placeholder="Actucal Number" >
+                                                                <input type="text" name="parent" class="form-control" readonly="readonly" value={{$category->parent}}>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="col-md-offset-6 col-md-2 col-sm-offset-7 col-sm-10">
-                                                                <button type="submit" class="btn btn-primary">创建单据</button>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </form>
-
-                                            </div>
-
-                                        </section>
-                                    </div>
-                                    <div class="tab-pane" id="more">
-                                        <section class="panel">
-                                            <div class="panel-body">
-                                                <form class="form-horizontal" role="form" method="POST" action="{{ url('correct')}}">
-                                                    <div class="col-md-1">
-                                                        <div class="form-group">
-                                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">商品ID</label>
-                                                            <div class="col-sm-6">
-                                                                <input type="text" name="id" class="form-control" placeholder="Commodity ID" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">真实数量</label>
-                                                            <div class="col-sm-6">
-                                                                <input type="text" name="number" class="form-control" placeholder="Actucal Number" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <div class="col-md-offset-6 col-md-2 col-sm-offset-7 col-sm-10">
-                                                                <button type="submit" class="btn btn-primary">创建单据</button>
+                                                                <button type="submit" class="btn btn-primary">修改分类</button>
                                                             </div>
                                                         </div>
 
