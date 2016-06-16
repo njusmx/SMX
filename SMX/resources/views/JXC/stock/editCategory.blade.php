@@ -62,9 +62,9 @@
                 <i class="on border-dark animated bounceIn"></i>
             </div>
             <div class="profile-body dropdown">
-                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>KC-00001<span class="caret"></span></h4></a>
+                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>{{Auth::user()->name}}<span class="caret"></span></h4></a>
                 <small class="title">库存管理人员</small>
-                <h4>业绩点:<span>80</span></h4>
+                <h4>业绩点:<span>{{Auth::user()->count}}</span></h4>
 
 
                 <ul class="dropdown-menu animated fadeInRight" role="menu">
@@ -97,7 +97,7 @@
                             <a  href="/stock" title="商品分类" >商品分类</a>
                         </li>
                         <li>
-                            <a  href="/commodity" title="商品管理">商品管理</a>
+                            <a  href="stock/commodity" title="商品管理">商品管理</a>
                         </li>
                     </ul>
                 </li>

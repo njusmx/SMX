@@ -36,15 +36,15 @@ Route::get('stock/category/add', [
 Route::post('stock/category/add', 'CategoryController@postAdd');
 
 //商品管理
-Route::get('commodity', [
-    'as' => 'commodity', 'uses' => 'commodityController@index']);
-Route::resource('commodity/delete', 'commodityController@destroy');
+Route::get('stock/commodity', [
+    'as' => 'stkcom', 'uses' => 'CommodityController@index']);
+Route::resource('stock/commodity/delete', 'CommodityController@destroy');
 
-Route::get('commodity/edit/{id}', 'commodityEditController@index');
-Route::post('commodity/edit', 'commodityEditController@modifycommodity');
-Route::get('commodity/add', [
-    'as' => 'addcom', 'uses' => 'commodityController@getAdd']);
-Route::post('commodity/add', 'commodityController@postAdd');
+Route::get('stock/commodity/edit/{id}', 'CommodityEditController@index');
+Route::post('stock/commodity/edit', 'CommodityEditController@modifyCommodity');
+Route::get('stock/commodity/add', [
+    'as' => 'addcom', 'uses' => 'CommodityController@getAdd']);
+Route::post('stock/commodity/add', 'CommodityController@postAdd');
 
 //库存管理
 Route::get('stock/check', [
@@ -55,9 +55,7 @@ Route::get('stock/correct', [
     'as' => 'correct', 'uses' => 'StockController@getCorrect']);
 Route::post('stock/correct', 'StockController@postCorrect');
 Route::get('stock/inform', [
-    'as' => 'less', 'uses' => 'StockController@getLess']);
-Route::get('stock/inform/more', [
-    'as' => 'more', 'uses' => 'StockController@getMore']);
+    'as' => 'less', 'uses' => 'StockController@getInform']);
 
 //salesman
 Route::get('sale', [

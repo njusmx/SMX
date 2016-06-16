@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Commodity;
+use App\User;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -42,25 +43,36 @@ class CommodityController extends Controller
             'name' => 'required|max:50',
             'type' => 'required|max:50',
             'category' => 'required|integer',
-            'alarm' => 'required|integer',
         ]);
-
         $parent = DB::select('select * from commodities where name = ? and type = ?', [$req->get('name'), $req->get('type')]);
-        if($parent != null){
+//        return $parent;
+        if($parent == null){
             $ca = new Commodity();
             $ca->name = $req->get('name');
             $ca->type = $req->get('type');
-            $ca->avgin = $req->get('avgin');
-            $ca->avgout = $req->get('avgout');
+            $ca->number = 0;
+            $ca->avgin = (double)$req->get('avgin');
+            $ca->avgout = (double)$req->get('avgout');
+            $ca->numin = 0;
+            $ca->numout = 0;
             $ca->category = $req->get('category');
-            $ca->alarm = $req->get('alarm');
+            $ca->lesswarn = $req->get('lesswarn');
+            $ca->morewarn = $req->get('morewarn');
+            $ca->alarm = $req->get('lesswarn');
             $ca->save();
-
+            CommodityController::updateScore();
         }else {
-            return Redirect::route('commodity')
+            return Redirect::route('addcom')
                 ->withInput()
                 ->withErrors('商品已存在！');
         }
         return Redirect::route('addcom');
+    }
+
+    public function updateScore(){
+        $user = User::find(Auth::user()->id);
+        $user->count=$user->count+1;
+        $user->save();
+        return redirect('stock');
     }
 }

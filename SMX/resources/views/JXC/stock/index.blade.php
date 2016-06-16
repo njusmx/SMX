@@ -62,9 +62,9 @@
                 <i class="on border-dark animated bounceIn"></i>
             </div>
             <div class="profile-body dropdown">
-                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>KC-00001<span class="caret"></span></h4></a>
+                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>{{Auth::user()->name}}<span class="caret"></span></h4></a>
                 <small class="title">库存管理人员</small>
-                <h4>业绩点:<span>80</span></h4>
+                <h4>业绩点:<span>{{Auth::user()->count}}</span></h4>
 
 
                 <ul class="dropdown-menu animated fadeInRight" role="menu">
@@ -93,11 +93,11 @@
                         <i class="fa fa-fw fa-shopping-cart"></i> 商品管理
                     </a>
                     <ul class=" nav-sub">
-                        <li>
+                        <li class="active">
                             <a  href="/stock" title="商品分类" >商品分类</a>
                         </li>
                         <li>
-                            <a  href="/commodity" title="商品管理">商品管理</a>
+                            <a  href="/stock/commodity" title="商品管理">商品管理</a>
                         </li>
                     </ul>
                 </li>
@@ -151,12 +151,12 @@
                                         <section class="panel">
                                             <div class="panel-body">
                                                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/stock/category/add')}}">
-                                                    <div class="col-md-offset-1 col-md-3">
+                                                    <div class="col-md-1">
                                                         <div class="form-group">
                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-offset-1 col-md-7">
+                                                    <div class="col-md-7">
 
                                                         <div class="form-group">
                                                             <label class="col-sm-3 control-label">类别名称</label>
@@ -186,7 +186,7 @@
                                     <div class="tab-pane active" id="showCategory">
                                         <section class="panel">
                                             <div class="panel-body">
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div class="panel panel-default">
 
                                                         <div class="panel-body">
@@ -221,7 +221,10 @@
                                                                         </tr>
                                                                     @endforeach
                                                                 @else
-                                                                    <h1>没有用户名单,请管理员添加</h1>
+                                                                    <div class="alert alert-danger alert-dismissable">
+                                                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                                        <strong>没有商品分类列表,请管理员添加</strong>
+                                                                    </div>
                                                                 @endif
                                                                 </tbody>
                                                             </table>

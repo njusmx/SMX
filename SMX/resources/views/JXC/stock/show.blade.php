@@ -62,9 +62,9 @@
                 <i class="on border-dark animated bounceIn"></i>
             </div>
             <div class="profile-body dropdown">
-                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>KC-00001<span class="caret"></span></h4></a>
+                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>{{Auth::user()->name}}<span class="caret"></span></h4></a>
                 <small class="title">库存管理人员</small>
-                <h4>业绩点:<span>80</span></h4>
+                <h4>业绩点:<span>{{Auth::user()->count}}</span></h4>
 
 
                 <ul class="dropdown-menu animated fadeInRight" role="menu">
@@ -147,17 +147,22 @@
                                     <div class="tab-pane active" id="stockcheck">
                                         <section class="panel">
                                             <div class="panel-body">
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div class="panel panel-default">
 
                                                         <div class="panel-body">
-                                                            <table class="table table-hover">
+                                                            <table class="table table-striped table-hover">
                                                                 <tr>
                                                                     <td>编号</td>
                                                                     <td>名称</td>
                                                                     <td>型号</td>
                                                                     <td>库存</td>
-                                                                    <td>均价</td>
+                                                                    <td>默认进价</td>
+                                                                    <td>默认售价</td>
+                                                                    <td>默认报警数量</td>
+                                                                    <td>默认积压数量</td>
+
+
                                                                 </tr>
                                                                 @if (count($commodities))
                                                                     @foreach ($commodities as $commodity)
@@ -168,10 +173,15 @@
                                                                             <td>{{ $commodity->number }}</td>
                                                                             <td>{{ $commodity->avgin }}</td>
                                                                             <td>{{ $commodity->avgout }}</td>
+                                                                            <td>{{ $commodity->lesswarn }}</td>
+                                                                            <td>{{ $commodity->morewarn }}</td>
                                                                         </tr>
                                                                     @endforeach
                                                                 @else
-                                                                    <h1>库中没有商品</h1>
+                                                                    <div class="alert alert-danger alert-dismissable">
+                                                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                                        <strong>库中没有商品</strong>
+                                                                    </div>
                                                                 @endif
                                                             </table>
                                                         </div>

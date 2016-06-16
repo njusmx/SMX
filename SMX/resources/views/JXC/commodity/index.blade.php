@@ -62,9 +62,9 @@
                 <i class="on border-dark animated bounceIn"></i>
             </div>
             <div class="profile-body dropdown">
-                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>KC-00001<span class="caret"></span></h4></a>
+                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>{{Auth::user()->name}}<span class="caret"></span></h4></a>
                 <small class="title">库存管理人员</small>
-                <h4>业绩点:<span>80</span></h4>
+                <h4>业绩点:<span>{{Auth::user()->count}}</span></h4>
 
 
                 <ul class="dropdown-menu animated fadeInRight" role="menu">
@@ -96,8 +96,8 @@
                         <li>
                             <a  href="/stock" title="商品分类" >商品分类</a>
                         </li>
-                        <li>
-                            <a  href="/expert/suggestion/index" title="商品管理">商品管理</a>
+                        <li class="active">
+                            <a  href="/stock/commodity" title="商品管理">商品管理</a>
                         </li>
                     </ul>
                 </li>
@@ -150,53 +150,59 @@
                                     <div class="tab-pane" id="addCommodity">
                                         <section class="panel">
                                             <div class="panel-body">
-                                                <form class="form-horizontal" role="form" method="POST" action="{{ url('/commodity/add')}}">
-                                                    <div class="col-md-offset-1 col-md-3">
+                                                <form class="form-horizontal" role="form" method="POST" action="{{ url('stock/commodity/add')}}">
+                                                    <div class="col-md-1">
                                                         <div class="form-group">
                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-offset-1 col-md-7">
+                                                    <div class="col-md-7">
 
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">商品名称</label>
+                                                            <label class="col-sm-4 control-label">商品名称</label>
                                                             <div class="col-sm-6">
                                                                 <input type="text" name="name" class="form-control" placeholder="Commodity Name" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">型号</label>
+                                                            <label class="col-sm-4 control-label">型号</label>
                                                             <div class="col-sm-6">
                                                                 <input type="text" name="type" class="form-control" placeholder="Commodity Type">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">商品类别</label>
+                                                            <label class="col-sm-4 control-label">商品类别</label>
                                                             <div class="col-sm-6">
                                                                 <input type="text" name="category" class="form-control" placeholder="Parent Category ID">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">默认进价</label>
+                                                            <label class="col-sm-4 control-label">默认进价</label>
                                                             <div class="col-sm-6">
                                                                 <input type="text" name="avgin" class="form-control" placeholder="Purchase Price">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">默认售价</label>
+                                                            <label class="col-sm-4 control-label">默认售价</label>
                                                             <div class="col-sm-6">
                                                                 <input type="text" name="avgout" class="form-control" placeholder="Sale Price">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">报警数量</label>
+                                                            <label class="col-sm-4 control-label">默认报警数量</label>
                                                             <div class="col-sm-6">
-                                                                <input type="text" name="alarm" class="form-control" placeholder="Alarm Number">
+                                                                <input type="text" name="lesswarn" class="form-control" placeholder="Alarm Number">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-4 control-label">默认积压数量</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="morewarn" class="form-control" placeholder="Overstock Number">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="col-md-offset-6 col-md-2 col-sm-offset-7 col-sm-10">
-                                                                <button type="submit" class="btn btn-primary">添加分类</button>
+                                                                <button type="submit" class="btn btn-primary">添加商品</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -210,7 +216,7 @@
                                     <div class="tab-pane active" id="showCommodity">
                                         <section class="panel">
                                             <div class="panel-body">
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div class="panel panel-default">
 
                                                         <div class="panel-body">
@@ -236,12 +242,12 @@
                                                                             <td>{{ $commodity->avgin }}</td>
                                                                             <td>{{ $commodity->avgout }}</td>
                                                                             <td>
-                                                                                <form action="{{ url('commodity/edit/'.$commodity->id) }}" style='display: inline' method="post">
+                                                                                <form action="{{ url('stock/commodity/edit/'.$commodity->id) }}" style='display: inline' method="post">
                                                                                     <input type="hidden" name="_method" value="GET">
                                                                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                                                     <button class="btn btn-sm btn-info">修改商品</button>
                                                                                 </form>
-                                                                                <form action="{{ url('commodity/delete/'.$commodity->id) }}" style='display: inline' method="post">
+                                                                                <form action="{{ url('stock/commodity/delete/'.$commodity->id) }}" style='display: inline' method="post">
                                                                                     <input type="hidden" name="_method" value="DELETE">
                                                                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                                                     <button class="btn btn-sm btn-danger" onclick="return confirm('确定删除?')">删除商品</button>
@@ -251,11 +257,26 @@
                                                                         </tr>
                                                                     @endforeach
                                                                 @else
-                                                                    <h1>没有用户名单,请管理员添加</h1>
+                                                                    <div class="alert alert-danger alert-dismissable">
+                                                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                                        <strong>没有商品列表,请管理员添加</strong>
+                                                                    </div>
                                                                 @endif
                                                                 </tbody>
                                                             </table>
+
                                                         </div>
+                                                        @if (count($errors) > 0)
+                                                            <div class="alert alert-danger alert-dismissable">
+                                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                                <strong>错误</strong>你填写数据有问题！请重新填写！<br><br>
+                                                                <ul>
+                                                                    @foreach ($errors->all() as $error)
+                                                                        <li>{{ $error }}</li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>

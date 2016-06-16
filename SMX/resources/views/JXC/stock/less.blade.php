@@ -62,9 +62,9 @@
                 <i class="on border-dark animated bounceIn"></i>
             </div>
             <div class="profile-body dropdown">
-                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>KC-00001<span class="caret"></span></h4></a>
+                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>{{Auth::user()->name}}<span class="caret"></span></h4></a>
                 <small class="title">库存管理人员</small>
-                <h4>业绩点:<span>80</span></h4>
+                <h4>业绩点:<span>{{Auth::user()->count}}</span></h4>
 
 
                 <ul class="dropdown-menu animated fadeInRight" role="menu">
@@ -154,21 +154,24 @@
                                                         <td>商品编号</td>
                                                         <td>商品名称</td>
                                                         <td>商品型号</td>
-                                                        <td>警戒积压率</td>
+                                                        <td>警戒阈值</td>
                                                         <td>库存数量</td>
                                                     </tr>
-                                                    @if (count($warns))
-                                                        @foreach ($warns as $warn)
+                                                    @if (count($lesswarns))
+                                                        @foreach ($lesswarns as $lesswarn)
                                                             <tr>
-                                                                <td>{{ $warns->id }}</td>
-                                                                <td>{{ $warns->name }}</td>
-                                                                <td>{{ $warns->type }}</td>
-                                                                <td>{{ $warns->morewarn }}</td>
-                                                                <td>{{ $warns->number }}</td>
+                                                                <td>{{ $lesswarn->id }}</td>
+                                                                <td>{{ $lesswarn->name }}</td>
+                                                                <td>{{ $lesswarn->type }}</td>
+                                                                <td>{{ $lesswarn->lesswarn }}</td>
+                                                                <td>{{ $lesswarn->number }}</td>
                                                             </tr>
                                                         @endforeach
                                                     @else
-                                                        <h1>没有积压商品</h1>
+                                                        <div class="alert alert-danger alert-dismissable">
+                                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                            <strong>没有库存数低于警戒值的商品</strong>
+                                                        </div>
                                                     @endif
                                                 </table>
                                             </div>
@@ -182,21 +185,24 @@
                                                         <td>商品编号</td>
                                                         <td>商品名称</td>
                                                         <td>商品型号</td>
-                                                        <td>警戒积压率</td>
+                                                        <td>积压阈值</td>
                                                         <td>库存数量</td>
                                                     </tr>
-                                                    @if (count($warns))
-                                                        @foreach ($warns as $warn)
+                                                    @if (count($morewarns))
+                                                        @foreach ($morewarns as $morewarn)
                                                             <tr>
-                                                                <td>{{ $warns->id }}</td>
-                                                                <td>{{ $warns->name }}</td>
-                                                                <td>{{ $warns->type }}</td>
-                                                                <td>{{ $warns->morewarn }}</td>
-                                                                <td>{{ $warns->number }}</td>
+                                                                <td>{{ $morewarn->id }}</td>
+                                                                <td>{{ $morewarn->name }}</td>
+                                                                <td>{{ $morewarn->type }}</td>
+                                                                <td>{{ $morewarn->morewarn }}</td>
+                                                                <td>{{ $morewarn->number }}</td>
                                                             </tr>
                                                         @endforeach
                                                     @else
-                                                        <h1>没有积压商品</h1>
+                                                        <div class="alert alert-danger alert-dismissable">
+                                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                            <strong>没有积压商品</strong>
+                                                        </div>
                                                     @endif
                                                 </table>
 

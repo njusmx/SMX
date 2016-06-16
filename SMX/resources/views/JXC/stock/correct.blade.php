@@ -62,9 +62,9 @@
                 <i class="on border-dark animated bounceIn"></i>
             </div>
             <div class="profile-body dropdown">
-                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>KC-00001<span class="caret"></span></h4></a>
+                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>{{Auth::user()->name}}<span class="caret"></span></h4></a>
                 <small class="title">库存管理人员</small>
-                <h4>业绩点:<span>80</span></h4>
+                <h4>业绩点:<span>{{Auth::user()->count}}</span></h4>
 
 
                 <ul class="dropdown-menu animated fadeInRight" role="menu">
@@ -97,7 +97,7 @@
                             <a  href="/stock" title="商品分类" >商品分类</a>
                         </li>
                         <li>
-                            <a  href="/commodity" title="商品管理">商品管理</a>
+                            <a  href="/stock/commodity" title="商品管理">商品管理</a>
                         </li>
                     </ul>
                 </li>
@@ -147,9 +147,11 @@
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="less">
+
                                         <section class="panel">
+
                                             <div class="panel-body">
-                                                <form class="form-horizontal" role="form" method="POST" action="{{ url('correct')}}">
+                                                <form class="form-horizontal" role="form" method="POST" action="{{ url('stock/correct')}}">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -158,15 +160,29 @@
                                                     </div>
                                                     <div class="col-md-7">
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">商品ID</label>
+                                                            <input type="hidden" name="loss"  value="0" >
+                                                            <input type="hidden" name="status"  value="0" >
+                                                            <label class="col-sm-3 control-label">商品名称</label>
                                                             <div class="col-sm-6">
-                                                                <input type="text" name="id" class="form-control" placeholder="Commodity ID" >
+                                                                <input type="text" name="name" class="form-control" placeholder="Commodity Name" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">真实数量</label>
+                                                            <label class="col-sm-3 control-label">商品型号</label>
                                                             <div class="col-sm-6">
-                                                                <input type="text" name="number" class="form-control" placeholder="Actucal Number" >
+                                                                <input type="text" name="type" class="form-control" placeholder="Commodity Type" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">差值</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="diff" class="form-control" placeholder="Actucal Number" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">创建者</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="creator" class="form-control" readonly="readonly" placeholder={{$name}} value="{{$name}}" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -176,16 +192,88 @@
                                                         </div>
 
                                                     </div>
+
                                                 </form>
 
                                             </div>
-
+                                            @if (count($errors) > 0)
+                                                <div class="alert alert-danger alert-dismissable">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                    <strong>错误</strong>你填写数据有问题！请重新填写！<br><br>
+                                                    <ul>
+                                                        @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
                                         </section>
+                                        <section class="panel">
+                                            <div class="panel panel-primary">
+                                                <div class="panel-heading">
+                                                    <h2  style="color: #fff;">所有库存报损单</h2>
+                                                    <div class="actions pull-right">
+                                                        <i class="fa fa-expand"></i>
+                                                        <i class="fa fa-chevron-down"></i>
+                                                        <i class="fa fa-times"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-body">
+                                                        <div class="panel panel-default">
+
+                                                            <div class="panel-body">
+                                                                <table class="table table-striped">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <td>编号</td>
+                                                                        <td>商品名称</td>
+                                                                        <td>商品型号</td>
+                                                                        <td>库存差额</td>
+                                                                        <td>创建者</td>
+                                                                        <td>状态</td>
+                                                                        <td>创建日期</td>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    @if (count($stocklessforms))
+                                                                        @foreach ($stocklessforms as $stocklessform)
+                                                                            <tr>
+                                                                                <td>{{ $stocklessform->id }}</td>
+                                                                                <td>{{ $stocklessform->commodity }}</td>
+                                                                                <td>{{ $stocklessform->type }}</td>
+                                                                                <td>{{ $stocklessform->diff }}</td>
+                                                                                <td>{{ $stocklessform->creator }}</td>
+                                                                                {{--{{var_dump($stocklessform->status)}}--}}
+                                                                                @if ($stocklessform->status)
+                                                                                    <td>审批通过</td>
+                                                                                @else
+                                                                                    <td>待审批</td>
+                                                                                @endif
+                                                                                <td>{{ $stocklessform->created_at }}</td>
+
+                                                                            </tr>
+                                                                        @endforeach
+                                                                    @else
+                                                                        <div class="alert alert-danger alert-dismissable">
+                                                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                                            <strong>没有库存报损单,请管理员添加</strong>
+                                                                        </div>
+                                                                    @endif
+                                                                    </tbody>
+                                                                </table>
+
+                                                            </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+
                                     </div>
                                     <div class="tab-pane" id="more">
                                         <section class="panel">
                                             <div class="panel-body">
-                                                <form class="form-horizontal" role="form" method="POST" action="{{ url('correct')}}">
+                                                <form class="form-horizontal" role="form" method="POST" action="{{ url('stock/correct')}}">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -194,15 +282,28 @@
                                                     </div>
                                                     <div class="col-md-7">
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">商品ID</label>
+                                                            <input type="hidden" name="loss"  value="1" >
+                                                            <label class="col-sm-3 control-label">商品名称</label>
                                                             <div class="col-sm-6">
-                                                                <input type="text" name="id" class="form-control" placeholder="Commodity ID" >
+                                                                <input type="text" name="name" class="form-control" placeholder="Commodity Name" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="col-sm-3 control-label">真实数量</label>
+                                                            <label class="col-sm-3 control-label">商品型号</label>
                                                             <div class="col-sm-6">
-                                                                <input type="text" name="number" class="form-control" placeholder="Actucal Number" >
+                                                                <input type="text" name="type" class="form-control" placeholder="Commodity Type" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">差值</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="diff" class="form-control" placeholder="Actucal Number" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">创建者</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="creator" class="form-control" readonly="readonly" placeholder={{$name}} value="{{$name}}">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -215,7 +316,78 @@
                                                 </form>
 
                                             </div>
+                                            @if (count($errors) > 0)
+                                                <div class="alert alert-danger alert-dismissable">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                    <strong>错误</strong>你填写数据有问题！请重新填写！<br><br>
+                                                    <ul>
+                                                        @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
 
+                                        </section>
+                                        <section class="panel">
+                                            <div class="panel panel-primary">
+                                                <div class="panel-heading">
+                                                    <h2  style="color: #fff;">所有库存报损单</h2>
+                                                    <div class="actions pull-right">
+                                                        <i class="fa fa-expand"></i>
+                                                        <i class="fa fa-chevron-down"></i>
+                                                        <i class="fa fa-times"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="panel panel-default">
+
+                                                        <div class="panel-body">
+                                                            <table class="table table-striped">
+                                                                <thead>
+                                                                <tr>
+                                                                    <td>编号</td>
+                                                                    <td>商品名称</td>
+                                                                    <td>商品型号</td>
+                                                                    <td>库存差额</td>
+                                                                    <td>创建者</td>
+                                                                    <td>状态</td>
+                                                                    <td>创建日期</td>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                @if (count($stockmoreforms))
+                                                                    @foreach ($stockmoreforms as $stockmoreform)
+                                                                        <tr>
+                                                                            <td>{{ $stockmoreform->id }}</td>
+                                                                            <td>{{ $stockmoreform->commodity }}</td>
+                                                                            <td>{{ $stockmoreform->type }}</td>
+                                                                            <td>{{ $stockmoreform->diff }}</td>
+                                                                            <td>{{ $stockmoreform->creator }}</td>
+                                                                            {{--{{var_dump($stocklessform->status)}}--}}
+                                                                            @if ($stockmoreform->status)
+                                                                                <td>审批通过</td>
+                                                                            @else
+                                                                                <td>待审批</td>
+                                                                            @endif
+                                                                            <td>{{ $stockmoreform->created_at }}</td>
+
+                                                                        </tr>
+                                                                    @endforeach
+                                                                @else
+                                                                    <div class="alert alert-danger alert-dismissable">
+                                                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                                        <strong>没有库存报溢单,请管理员添加</strong>
+                                                                    </div>
+                                                                @endif
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </section>
                                     </div>
                                 </div>
