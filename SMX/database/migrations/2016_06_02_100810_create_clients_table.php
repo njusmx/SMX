@@ -19,9 +19,10 @@ class CreateClientsTable extends Migration
             $table->string('name');
             $table->string('tel');
             $table->string('address');
-            $table->double('limit');
+            $table->double('limit');//应收额度
             $table->double('in');//应收
             $table->double('out');//应付
+            $table->double('overall');//历史付款总额
             $table->timestamps();
         });
     }

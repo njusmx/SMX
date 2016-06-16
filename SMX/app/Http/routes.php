@@ -57,13 +57,15 @@ Route::post('stock/correct', 'StockController@postCorrect');
 Route::get('stock/inform', [
     'as' => 'less', 'uses' => 'StockController@getInform']);
 
-//salesman
+//客户管理
 Route::get('sale', [
     'as' => 'sale', 'uses' => 'SaleController@getClient']);
 Route::get('sale/client/add', [
     'as' => 'addclient', 'uses' => 'SaleController@getAddclient']);
 Route::post('sale/client/add', 'SaleController@addClient');
-Route::get('sale/client/find', 'SaleController@getfindClient');
 Route::post('sale/client/find', 'SaleController@findClient');
 Route::resource('sale/client/delete', 'ClientController');
-Route::resource('sale/client/edit', 'ClientController');
+Route::get('sale/client/edit/{id}', 'ClientController@index');
+Route::post('sale/client/edit', 'ClientController@modifyClient');
+
+//进货管理

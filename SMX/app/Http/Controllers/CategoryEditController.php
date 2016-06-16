@@ -21,6 +21,12 @@ class CategoryEditController extends Controller
     }
     
     public function modifyCategory(Request $request){
+
+        $this->validate($request,[
+            'name' => 'required',
+        ]);
+
+
         $id = $request->input('id');
         $category = Category::find($id);
         $category->name=$request->input('name');

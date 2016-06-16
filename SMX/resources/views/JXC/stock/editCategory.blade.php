@@ -178,6 +178,17 @@
                                                 </form>
 
                                             </div>
+                                            @if (count($errors) > 0)
+                                                <div class="alert alert-danger alert-dismissable">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                    <strong>错误</strong>你填写数据有问题！请重新填写！<br><br>
+                                                    <ul>
+                                                        @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
 
                                         </section>
                                     </div>
