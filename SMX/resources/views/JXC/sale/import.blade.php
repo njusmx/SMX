@@ -63,7 +63,7 @@
             </div>
             <div class="profile-body dropdown">
                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>{{Auth::user()->name}}<span class="caret"></span></h4></a>
-                <small class="title">库存管理人员</small>
+                <small class="title">进货销售人员</small>
                 <h4>业绩点:<span>{{Auth::user()->count}}</span></h4>
 
 
@@ -135,8 +135,8 @@
     <!--main content start-->
     <section class="main-content-wrapper">
         <div class="pageheader">
-            <h1>进货销售管理</h1>
-            <p class="description">这里展示进货销售数据 </p>
+            <h1>进货管理</h1>
+            <p class="description">这里展示进货数据 </p>
         </div>
         <section id="main-content" class="animated fadeInUp">
             <div class="row">

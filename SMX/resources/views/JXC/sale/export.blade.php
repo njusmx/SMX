@@ -63,7 +63,7 @@
             </div>
             <div class="profile-body dropdown">
                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>{{Auth::user()->name}}<span class="caret"></span></h4></a>
-                <small class="title">库存管理人员</small>
+                <small class="title">销售管理人员</small>
                 <h4>业绩点:<span>{{Auth::user()->count}}</span></h4>
 
 
@@ -135,15 +135,15 @@
     <!--main content start-->
     <section class="main-content-wrapper">
         <div class="pageheader">
-            <h1>进货销售管理</h1>
-            <p class="description">这里展示进货销售数据 </p>
+            <h1>销售管理</h1>
+            <p class="description">这里展示销售数据 </p>
         </div>
         <section id="main-content" class="animated fadeInUp">
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h2  style="color: #fff;">所有进货相关单据</h2>
+                            <h2  style="color: #fff;">所有销售相关单据</h2>
                             <div class="actions pull-right">
                                 <i class="fa fa-expand"></i>
                                 <i class="fa fa-chevron-down"></i>
@@ -152,7 +152,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="panel panel-default">
-                                <form class="form-horizontal" role="form" method="POST" action="{{ url('sale/import/find')}}">
+                                <form class="form-horizontal" role="form" method="POST" action="{{ url('sale/export/find')}}">
                                     <div class="form-group">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     </div>
@@ -162,7 +162,7 @@
                                             <!-- Inline Radios -->
                                             <div>
                                                 <label class="radio-inline" style="padding-left:0px;">
-                                                    <input type="radio" value="1" checked="checked" name="by" style="width: 15px!important; font-size: 16px;">进货商
+                                                    <input type="radio" value="1" checked="checked" name="by" style="width: 15px!important; font-size: 16px;">销售商
                                                 </label>
                                             </div>
                                             <div>
@@ -191,33 +191,35 @@
                                         <td>创建日期</td>
                                         <td>状态</td>
                                         <td>单据类型</td>
-                                        <td>供应商</td>
+                                        <td>销售商</td>
                                         <td>操作员</td>
-                                        <td>总计金额</td>
+                                        <td>折让前金额</td>
+                                        <td>折让后金额</td>
                                         <td>操作</td>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @if (count($imports))
-                                        @foreach ($imports as $import)
+                                    @if (count($exports))
+                                        @foreach ($exports as $export)
                                             <tr>
-                                                <td>{{ $import->id }}</td>
-                                                <td>{{ $import->created_at }}</td>
-                                                @if ($import->status)
+                                                <td>{{ $export->id }}</td>
+                                                <td>{{ $export->created_at }}</td>
+                                                @if ($export->status)
                                                     <td>审批通过</td>
                                                 @else
                                                     <td>待审批</td>
                                                 @endif
-                                                @if ($import->type)
-                                                    <td>进货单</td>
+                                                @if ($export->type)
+                                                    <td>销售单</td>
                                                 @else
-                                                    <td>进货退货单</td>
+                                                    <td>销售退货单</td>
                                                 @endif
-                                                <td>{{ $import->clientname }}</td>
-                                                <td>{{ $import->operatorname }}</td>
-                                                <td>{{ $import->overall }}</td>
+                                                <td>{{ $export->clientname }}</td>
+                                                <td>{{ $export->operatorname }}</td>
+                                                <td>{{ $export->initoverall }}</td>
+                                                <td>{{ $export->overall }}</td>
                                                 <td>
-                                                    <form action="{{ url('sale/import/show/'.$import->id) }}" style='display: inline' method="post">
+                                                    <form action="{{ url('sale/export/show/'.$export->id) }}" style='display: inline' method="post">
                                                         <input type="hidden" name="_method" value="GET">
                                                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                         <button class="btn btn-sm btn-info">查看详情</button>

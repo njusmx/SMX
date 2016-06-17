@@ -135,8 +135,8 @@
     <!--main content start-->
     <section class="main-content-wrapper">
         <div class="pageheader">
-            <h1>进货销售管理</h1>
-            <p class="description">这里展示进货销售数据 </p>
+            <h1>客户管理</h1>
+            <p class="description">这里展示客户数据 </p>
         </div>
         <section id="main-content" class="animated fadeInUp">
 
