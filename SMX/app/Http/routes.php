@@ -69,3 +69,20 @@ Route::get('sale/client/edit/{id}', 'ClientController@index');
 Route::post('sale/client/edit', 'ClientController@modifyClient');
 
 //进货管理
+Route::get('sale/import', [
+    'as' => 'import', 'uses' => 'SaleController@getImports']);
+Route::get('sale/import/add', [
+    'as' => 'addimports', 'uses' => 'SaleController@getAddImports']);
+Route::post('sale/import/add', 'SaleController@addImports');
+Route::post('sale/import/find', 'SaleController@findImports');
+Route::get('sale/import/show/{id}', 'SaleController@showImportDetail');
+
+//销售管理
+Route::get('sale/export', [
+    'as' => 'export', 'uses' => 'SaleController@getExports']);
+Route::get('sale/export/add', [
+    'as' => 'addexports', 'uses' => 'SaleController@getAddExports']);
+Route::post('sale/export/add', 'SaleController@addExports');
+Route::post('sale/export/find', 'SaleController@findExports');
+Route::get('sale/export/show/{id}', 'SaleController@showExportDetail');
+

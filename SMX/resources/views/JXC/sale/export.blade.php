@@ -101,12 +101,12 @@
                         </li>
                     </ul>
                 </li>
-                <li class=" nav-dropdown open active">
+                <li class=" nav-dropdown">
                     <a href="/sale/import" title="进货管理" >
                         <i class="fa  fa-fw fa-tachometer"></i>进货管理
                     </a>
                     <ul class=" nav-sub">
-                        <li  class="active">
+                        <li >
                             <a  href="/sale/import" title="所有进货单" >所有进货单</a>
                         </li>
                         <li>
@@ -114,12 +114,12 @@
                         </li>
                     </ul>
                 </li>
-                <li class=" nav-dropdown ">
+                <li class=" nav-dropdown  open active">
                     <a href="/sale/export" title="销售管理" >
                         <i class="fa  fa-fw fa-tachometer"></i>销售管理
                     </a>
                     <ul class=" nav-sub">
-                        <li>
+                        <li  class="active">
                             <a  href="/sale/export" title="所有销售单" >所有销售单</a>
                         </li>
                         <li>
@@ -152,11 +152,11 @@
                         </div>
                         <div class="panel-body">
                             <div class="panel panel-default">
-                                 <form class="form-horizontal" role="form" method="POST" action="{{ url('sale/import/find')}}">
-                                     <div class="form-group">
-                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                     </div>
-                                     <div class="form-group">
+                                <form class="form-horizontal" role="form" method="POST" action="{{ url('sale/import/find')}}">
+                                    <div class="form-group">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    </div>
+                                    <div class="form-group">
                                         <label class="col-sm-2 col-md-2 control-label">查询依据</label>
                                         <div class="col-sm-6" style="margin-left: 3%;">
                                             <!-- Inline Radios -->
@@ -172,13 +172,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                     <div class="form-group">
-                                         <label class="col-sm-2 col-md-2 control-label" >关键字</label>
-                                         <div class="col-sm-4">
-                                             <input type="text" name="content" class="form-control" placeholder="Condition" >
-                                         </div>
-                                         <button type="submit" class="btn btn-primary">查找单据</button>
-                                     </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-md-2 control-label" >关键字</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" name="content" class="form-control" placeholder="Condition" >
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">查找单据</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

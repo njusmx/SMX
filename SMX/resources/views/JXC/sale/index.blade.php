@@ -102,15 +102,30 @@
                     </ul>
                 </li>
                 <li class=" nav-dropdown ">
-                    <a href="#" title="进货管理" >
+                    <a href="/sale/import" title="进货管理" >
                         <i class="fa  fa-fw fa-tachometer"></i>进货管理
                     </a>
+                    <ul class=" nav-sub">
+                        <li>
+                            <a  href="/sale/import" title="所有进货单" >所有进货单</a>
+                        </li>
+                        <li>
+                            <a  href="/sale/import/add" title="创建进货单">创建进货单</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class=" nav-dropdown ">
-                    <a href="#" title="销售管理" >
+                    <a href="/sale/export" title="销售管理" >
                         <i class="fa  fa-fw fa-tachometer"></i>销售管理
                     </a>
-
+                    <ul class=" nav-sub">
+                        <li>
+                            <a  href="/sale/export" title="所有销售单" >所有销售单</a>
+                        </li>
+                        <li>
+                            <a  href="/sale/export/add" title="创建销售单">创建销售单</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>

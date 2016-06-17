@@ -143,7 +143,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h2  style="color: #fff;">所有进货相关单据</h2>
+                            <h2  style="color: #fff;">单据详情</h2>
                             <div class="actions pull-right">
                                 <i class="fa fa-expand"></i>
                                 <i class="fa fa-chevron-down"></i>
@@ -151,90 +151,61 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <div class="panel panel-default">
-                                 <form class="form-horizontal" role="form" method="POST" action="{{ url('sale/import/find')}}">
-                                     <div class="form-group">
-                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                     </div>
-                                     <div class="form-group">
-                                        <label class="col-sm-2 col-md-2 control-label">查询依据</label>
-                                        <div class="col-sm-6" style="margin-left: 3%;">
-                                            <!-- Inline Radios -->
-                                            <div>
-                                                <label class="radio-inline" style="padding-left:0px;">
-                                                    <input type="radio" value="1" checked="checked" name="by" style="width: 15px!important; font-size: 16px;">进货商
-                                                </label>
-                                            </div>
-                                            <div>
-                                                <label class="radio-inline" style="padding-left:0px;">
-                                                    <input type="radio" value="2" name="by" style="width: 15px!important; padding-left: 0px!important; font-size: 18px;">商品名
-                                                </label>
-                                            </div>
+                            <form class="form-horizontal">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-md-2 control-label" >单据编号</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" readonly="readonly" value={{$import->id}} >
                                         </div>
                                     </div>
-                                     <div class="form-group">
-                                         <label class="col-sm-2 col-md-2 control-label" >关键字</label>
-                                         <div class="col-sm-4">
-                                             <input type="text" name="content" class="form-control" placeholder="Condition" >
-                                         </div>
-                                         <button type="submit" class="btn btn-primary">查找单据</button>
-                                     </div>
-                                </form>
-                            </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-md-2 control-label">进货商</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" readonly="readonly" value={{$import->clientname}} >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-md-2 control-label">操作员</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="name" class="form-control" readonly="readonly" value={{$import->operatorname}} >
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                         <div class="panel-body">
-                            <div class="panel panel-default">
-                                <table class="table table-striped">
-                                    <thead>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <td>商品编号</td>
+                                    <td>商品名称</td>
+                                    <td>型号</td>
+                                    <td>数量</td>
+                                    <td>单价</td>
+                                    <td>金额</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @if ($import)
                                     <tr>
-                                        <td>单据编号</td>
-                                        <td>创建日期</td>
-                                        <td>状态</td>
-                                        <td>单据类型</td>
-                                        <td>供应商</td>
-                                        <td>操作员</td>
-                                        <td>总计金额</td>
-                                        <td>操作</td>
+                                        <td>{{ $com->id }}</td>
+                                        <td>{{ $com->name }}</td>
+                                        <td>{{ $com->type }}</td>
+                                        <td>{{ $import->number }}</td>
+                                        <td>{{ $com->avgin }}</td>
+                                        <td>{{ $import->overall }}</td>
                                     </tr>
-                                    </thead>
-                                    <tbody>
-                                    @if (count($imports))
-                                        @foreach ($imports as $import)
-                                            <tr>
-                                                <td>{{ $import->id }}</td>
-                                                <td>{{ $import->created_at }}</td>
-                                                @if ($import->status)
-                                                    <td>审批通过</td>
-                                                @else
-                                                    <td>待审批</td>
-                                                @endif
-                                                @if ($import->type)
-                                                    <td>进货单</td>
-                                                @else
-                                                    <td>进货退货单</td>
-                                                @endif
-                                                <td>{{ $import->clientname }}</td>
-                                                <td>{{ $import->operatorname }}</td>
-                                                <td>{{ $import->overall }}</td>
-                                                <td>
-                                                    <form action="{{ url('sale/import/show/'.$import->id) }}" style='display: inline' method="post">
-                                                        <input type="hidden" name="_method" value="GET">
-                                                        <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                        <button class="btn btn-sm btn-info">查看详情</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    @else
-                                        <div class="alert alert-danger alert-dismissable">
-                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                            <strong>没有进货相关单据,请管理员添加</strong>
-                                        </div>
-                                    @endif
-                                    </tbody>
-                                </table>
-                            </div>
+                                @else
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <strong>没有进货相关单据,请管理员添加</strong>
+                                    </div>
+                                @endif
+                                </tbody>
+                            </table>
                         </div>
+
                     </div>
                 </div>
             </div>

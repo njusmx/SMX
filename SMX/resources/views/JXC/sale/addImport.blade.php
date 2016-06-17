@@ -89,34 +89,41 @@
             <h5 class="sidebar-header">Navigation</h5>
             <ul class="nav nav-pills nav-stacked">
                 <li class="nav-dropdown">
-                    <a href="#" title="商品管理">
-                        <i class="fa fa-fw fa-shopping-cart"></i> 商品管理
+                    <a href="#" title="客户管理">
+                        <i class="fa fa-fw fa-shopping-cart"></i>客户管理
                     </a>
                     <ul class=" nav-sub">
-                        <li class="active">
-                            <a  href="/stock" title="商品分类" >商品分类</a>
+                        <li>
+                            <a  href="/sale" title="所有客户" >所有客户</a>
                         </li>
                         <li>
-                            <a  href="/stock/commodity" title="商品管理">商品管理</a>
+                            <a  href="/sale/client/add" title="添加客户">添加客户</a>
                         </li>
                     </ul>
                 </li>
                 <li class=" nav-dropdown open active">
-                    <a href="#" title="库存管理" >
-                        <i class="fa  fa-fw fa-tachometer"></i>库存管理
+                    <a href="/sale/import" title="进货管理" >
+                        <i class="fa  fa-fw fa-tachometer"></i>进货管理
                     </a>
                     <ul class=" nav-sub">
                         <li>
-                            <a  href="/stock/check" title="库存盘点">库存盘点</a>
+                            <a  href="/sale/import" title="所有进货单" >所有进货单</a>
                         </li>
-                        <li >
-                            <a  href="/stock/show" title="库存查看">库存查看</a>
+                        <li  class="active">
+                            <a  href="/sale/import/add" title="创建进货单">创建进货单</a>
                         </li>
-                        <li class="active">
-                            <a  href="/stock/correct" title="库存修正">库存修正</a>
+                    </ul>
+                </li>
+                <li class=" nav-dropdown ">
+                    <a href="/sale/export" title="销售管理" >
+                        <i class="fa  fa-fw fa-tachometer"></i>销售管理
+                    </a>
+                    <ul class=" nav-sub">
+                        <li>
+                            <a  href="/sale/export" title="所有销售单" >所有销售单</a>
                         </li>
-                        <li >
-                            <a  href="/stock/inform" title="库存通知">库存通知</a>
+                        <li>
+                            <a  href="/sale/export/add" title="创建销售单">创建销售单</a>
                         </li>
                     </ul>
                 </li>
@@ -128,270 +135,228 @@
     <!--main content start-->
     <section class="main-content-wrapper">
         <div class="pageheader">
-            <h1>库存管理</h1>
-            <p class="description">这里展示库存数据 </p>
+            <h1>进货销售管理</h1>
+            <p class="description">这里展示进货销售数据 </p>
         </div>
         <section id="main-content" class="animated fadeInUp">
 
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="tab-wrapper tab-primary">
                                 <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#less" data-toggle="tab">库存报损单</a>
+                                    <li class="active"><a href="#import" data-toggle="tab">创建进货单</a>
                                     </li>
-                                    <li ><a href="#more" data-toggle="tab">库存报溢单</a>
+                                    <li ><a href="#undoimport" data-toggle="tab">创建进货退货单</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="less">
-
+                                    <div class="tab-pane active" id="import">
                                         <section class="panel">
-
                                             <div class="panel-body">
-                                                <form class="form-horizontal" role="form" method="POST" action="{{ url('stock/correct')}}">
+                                                <form class="form-horizontal" role="form" method="POST" action="{{ url('sale/import/add')}}">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                            <input type="hidden" name="type" value="1">
                                                         </div>
-
                                                     </div>
                                                     <div class="col-md-7">
                                                         <div class="form-group">
-                                                            <input type="hidden" name="loss"  value="0" >
-                                                            <input type="hidden" name="status"  value="0" >
-                                                            <label class="col-sm-3 control-label">商品名称</label>
-                                                            <div class="col-sm-6">
-                                                                <input type="text" name="name" class="form-control" placeholder="Commodity Name" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">商品型号</label>
-                                                            <div class="col-sm-6">
-                                                                <input type="text" name="type" class="form-control" placeholder="Commodity Type" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">差值</label>
-                                                            <div class="col-sm-6">
-                                                                <input type="text" name="diff" class="form-control" placeholder="Actucal Number" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">创建者</label>
-                                                            <div class="col-sm-6">
-                                                                <input type="text" name="creator" class="form-control" readonly="readonly" placeholder={{$name}} value="{{$name}}" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <div class="col-md-offset-6 col-md-2 col-sm-offset-7 col-sm-10">
-                                                                <button type="submit" class="btn btn-primary">创建单据</button>
-                                                            </div>
-                                                        </div>
+                                                            <label for="clientname" class="col-sm-3 control-label">供应商</label>
+                                                            <div class="col-sm-6 col-md-6 col-lg-6">
 
-                                                    </div>
-
-                                                </form>
-
-                                            </div>
-                                            @if (count($errors) > 0)
-                                                <div class="alert alert-danger alert-dismissable">
-                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                                    <strong>错误</strong>你填写数据有问题！请重新填写！<br><br>
-                                                    <ul>
-                                                        @foreach ($errors->all() as $error)
-                                                            <li>{{ $error }}</li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            @endif
-                                        </section>
-                                        <section class="panel">
-                                            <div class="panel panel-primary">
-                                                <div class="panel-heading">
-                                                    <h2  style="color: #fff;">所有库存报损单</h2>
-                                                    <div class="actions pull-right">
-                                                        <i class="fa fa-expand"></i>
-                                                        <i class="fa fa-chevron-down"></i>
-                                                        <i class="fa fa-times"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="panel-body">
-                                                        <div class="panel panel-default">
-
-                                                            <div class="panel-body">
-                                                                <table class="table table-striped">
-                                                                    <thead>
-                                                                    <tr>
-                                                                        <td>编号</td>
-                                                                        <td>商品名称</td>
-                                                                        <td>商品型号</td>
-                                                                        <td>库存差额</td>
-                                                                        <td>创建者</td>
-                                                                        <td>状态</td>
-                                                                        <td>创建日期</td>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    @if (count($stocklessforms))
-                                                                        @foreach ($stocklessforms as $stocklessform)
-                                                                            <tr>
-                                                                                <td>{{ $stocklessform->id }}</td>
-                                                                                <td>{{ $stocklessform->commodity }}</td>
-                                                                                <td>{{ $stocklessform->type }}</td>
-                                                                                <td>{{ $stocklessform->diff }}</td>
-                                                                                <td>{{ $stocklessform->creator }}</td>
-                                                                                {{--{{var_dump($stocklessform->status)}}--}}
-                                                                                @if ($stocklessform->status)
-                                                                                    <td>审批通过</td>
-                                                                                @else
-                                                                                    <td>待审批</td>
-                                                                                @endif
-                                                                                <td>{{ $stocklessform->created_at }}</td>
-
-                                                                            </tr>
-                                                                        @endforeach
-                                                                    @else
-                                                                        <div class="alert alert-danger alert-dismissable">
-                                                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                                                            <strong>没有库存报损单,请管理员添加</strong>
-                                                                        </div>
-                                                                    @endif
-                                                                    </tbody>
-                                                                </table>
-
-                                                            </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </section>
-
-                                    </div>
-                                    <div class="tab-pane" id="more">
-                                        <section class="panel">
-                                            <div class="panel-body">
-                                                <form class="form-horizontal" role="form" method="POST" action="{{ url('stock/correct')}}">
-                                                    <div class="col-md-1">
-                                                        <div class="form-group">
-                                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <div class="form-group">
-                                                            <input type="hidden" name="loss"  value="1" >
-                                                            <label class="col-sm-3 control-label">商品名称</label>
-                                                            <div class="col-sm-6">
-                                                                <input type="text" name="name" class="form-control" placeholder="Commodity Name" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">商品型号</label>
-                                                            <div class="col-sm-6">
-                                                                <input type="text" name="type" class="form-control" placeholder="Commodity Type" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">差值</label>
-                                                            <div class="col-sm-6">
-                                                                <input type="text" name="diff" class="form-control" placeholder="Actucal Number" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label">创建者</label>
-                                                            <div class="col-sm-6">
-                                                                <input type="text" name="creator" class="form-control" readonly="readonly" placeholder={{$name}} value="{{$name}}">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <div class="col-md-offset-6 col-md-2 col-sm-offset-7 col-sm-10">
-                                                                <button type="submit" class="btn btn-primary">创建单据</button>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </form>
-
-                                            </div>
-                                            @if (count($errors) > 0)
-                                                <div class="alert alert-danger alert-dismissable">
-                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                                    <strong>错误</strong>你填写数据有问题！请重新填写！<br><br>
-                                                    <ul>
-                                                        @foreach ($errors->all() as $error)
-                                                            <li>{{ $error }}</li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            @endif
-
-                                        </section>
-                                        <section class="panel">
-                                            <div class="panel panel-primary">
-                                                <div class="panel-heading">
-                                                    <h2  style="color: #fff;">所有库存报溢单</h2>
-                                                    <div class="actions pull-right">
-                                                        <i class="fa fa-expand"></i>
-                                                        <i class="fa fa-chevron-down"></i>
-                                                        <i class="fa fa-times"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="panel-body">
-                                                    <div class="panel panel-default">
-
-                                                        <div class="panel-body">
-                                                            <table class="table table-striped">
-                                                                <thead>
-                                                                <tr>
-                                                                    <td>编号</td>
-                                                                    <td>商品名称</td>
-                                                                    <td>商品型号</td>
-                                                                    <td>库存差额</td>
-                                                                    <td>创建者</td>
-                                                                    <td>状态</td>
-                                                                    <td>创建日期</td>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                @if (count($stockmoreforms))
-                                                                    @foreach ($stockmoreforms as $stockmoreform)
-                                                                        <tr>
-                                                                            <td>{{ $stockmoreform->id }}</td>
-                                                                            <td>{{ $stockmoreform->commodity }}</td>
-                                                                            <td>{{ $stockmoreform->type }}</td>
-                                                                            <td>{{ $stockmoreform->diff }}</td>
-                                                                            <td>{{ $stockmoreform->creator }}</td>
-                                                                            {{--{{var_dump($stocklessform->status)}}--}}
-                                                                            @if ($stockmoreform->status)
-                                                                                <td>审批通过</td>
-                                                                            @else
-                                                                                <td>待审批</td>
+                                                                @if (count($clients))
+                                                                    <select name="clientid" class="form-control">
+                                                                        @foreach ($clients as $client)
+                                                                            @if($client->type == "进货商")
+                                                                                <option value="{{ $client->id }}">{{ $client->name }}</option>
                                                                             @endif
-                                                                            <td>{{ $stockmoreform->created_at }}</td>
-
-                                                                        </tr>
-                                                                    @endforeach
+                                                                        @endforeach
+                                                                    </select>
                                                                 @else
-                                                                    <div class="alert alert-danger alert-dismissable">
-                                                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                                                        <strong>没有库存报溢单,请管理员添加</strong>
-                                                                    </div>
+                                                                    <select id="disabledSelect" class="form-control">
+                                                                        <option>没有供应商请添加</option>
+                                                                    </select>
                                                                 @endif
-                                                                </tbody>
-                                                            </table>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="hidden" name="status"  value="0" >
+                                                            <label class="col-sm-3 control-label">商品编号</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="commodityid" class="form-control" placeholder="Commodity ID" >
+                                                            </div>
+                                                        </div>
 
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">数量</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="number" class="form-control" placeholder="Number" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">操作员</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="operatorname" class="form-control" readonly="readonly" placeholder={{$name}} value="{{$name}}" >
+                                                                <input type="hidden" name="operatorid" value="{{Auth::user()->id}}">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-offset-6 col-md-2 col-sm-offset-7 col-sm-10">
+                                                                <button type="submit" class="btn btn-primary">创建单据</button>
+                                                            </div>
                                                         </div>
 
                                                     </div>
-                                                </div>
+
+                                                </form>
+
                                             </div>
+                                            @if (count($errors) > 0)
+                                                <div class="alert alert-danger alert-dismissable">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                    <strong>错误</strong>你填写数据有问题！请重新填写！<br><br>
+                                                    <ul>
+                                                        @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
+                                        </section>
+                                    </div>
+                                    <div class="tab-pane" id="undoimport">
+                                        <section class="panel">
+                                            <div class="panel-body">
+                                                <form class="form-horizontal" role="form" method="POST" action="{{ url('sale/import/add')}}">
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                            <input type="hidden" name="type" value="0">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-7">
+
+                                                        <div class="form-group">
+                                                            <label for="clientname" class="col-sm-3 control-label">供应商</label>
+                                                            <div class="col-sm-6 col-md-6 col-lg-6">
+
+                                                                @if (count($clients))
+                                                                    <select name="clientid" class="form-control">
+                                                                        @foreach ($clients as $client)
+                                                                            @if($client->type == "进货商")
+                                                                                <option value="{{ $client->id }}">{{ $client->name }}</option>
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </select>
+                                                                @else
+                                                                    <select id="disabledSelect" class="form-control">
+                                                                        <option>没有供应商请添加</option>
+                                                                    </select>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="hidden" name="status"  value="0" >
+                                                            <label class="col-sm-3 control-label">商品编号</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="commodityid" class="form-control" placeholder="Commodity ID" >
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">数量</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="number" class="form-control" placeholder="Number" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">操作员</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="operatorname" class="form-control" readonly="readonly" placeholder={{$name}} value="{{$name}}" >
+                                                                <input type="hidden" name="operatorid" value="{{Auth::user()->id}}">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <div class="col-md-offset-6 col-md-2 col-sm-offset-7 col-sm-10">
+                                                                <button type="submit" class="btn btn-primary">创建单据</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                            @if (count($errors) > 0)
+                                                <div class="alert alert-danger alert-dismissable">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                    <strong>错误</strong>你填写数据有问题！请重新填写！<br><br>
+                                                    <ul>
+                                                        @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
+
                                         </section>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h2  style="color: #fff;">商品列表</h2>
+                            <div class="actions pull-right">
+                                <i class="fa fa-expand"></i>
+                                <i class="fa fa-chevron-down"></i>
+                                <i class="fa fa-times"></i>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-hover table-striped">
+                                <tr>
+                                    <td>编号</td>
+                                    <td>名称</td>
+                                    <td>型号</td>
+                                    <td>库存</td>
+                                    <td>默认进价</td>
+                                    <td>默认售价</td>
+                                    <td>默认报警数量</td>
+                                    <td>默认积压数量</td>
+
+
+                                </tr>
+                                @if (count($commodities))
+                                    @foreach ($commodities as $commodity)
+                                        <tr>
+                                            <td>{{ $commodity->id }}</td>
+                                            <td>{{ $commodity->name }}</td>
+                                            <td>{{ $commodity->type }}</td>
+                                            <td>{{ $commodity->number }}</td>
+                                            <td>{{ $commodity->avgin }}</td>
+                                            <td>{{ $commodity->avgout }}</td>
+                                            <td>{{ $commodity->lesswarn }}</td>
+                                            <td>{{ $commodity->morewarn }}</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <strong>库中没有商品</strong>
+                                    </div>
+                                @endif
+                            </table>
                         </div>
                     </div>
                 </div>

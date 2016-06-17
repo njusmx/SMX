@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Client;
 use App\User;
+use App\Commodity;
+use App\Import;
 use Illuminate\Support\Facades\Redirect;
 
 class SaleController extends Controller
@@ -51,7 +53,7 @@ class SaleController extends Controller
         $c->out = 0;
         $c->overall = 0;
         $c->save();
-        SaleController::updateScore();
+        SaleController::updateScore(1,0);
         return Redirect::route('sale');
 
     }
@@ -68,15 +70,149 @@ class SaleController extends Controller
 
     }
 
-    public function getfindClient(Request $req)
+    //进货管理
+
+    public function getImports()
     {
-        return view('JXC.sale.findclient', ['name' => Auth::user()->username]);
+        $imports = DB::select('select * from imports');
+        return view('JXC.sale.import', ['name' => Auth::user()->name, 'imports' => $imports]);
     }
 
-    public function updateScore(){
-        $user = User::find(Auth::user()->id);
-        $user->count=$user->count+1;
-        $user->save();
-        return redirect('sale');
+    public function getAddImports()
+    {
+        $clients = DB::select('select * from clients');
+        $commodities = DB::select('select * from commodities');
+        return view('JXC.sale.addImport', ['name' => Auth::user()->name, 'clients' => $clients, 'commodities' => $commodities]);
     }
+
+//    进货单通过审批后,会更改库存数据和客户的应收应付数据
+    public function addImports(Request $req)
+    {
+        $this->validate($req,[
+            'clientid' => 'required',
+            'type' => 'required',
+            'commodityid' => 'required',
+            'number' => 'required',
+        ]);
+
+        $import = new Import();
+        $import->status = $req->get('status');
+        $import->type = $req->get('type');
+
+        $c = DB::select('select * from clients where id = ?', [$req->get('clientid')]);
+        $import->clientname = $c[0]->name;
+        $import->clientid = $req->get('clientid');
+
+        $import->operatorid = $req->get('operatorid');
+        $import->operatorname = $req->get('operatorname');
+        $import->number = $req->get('number');
+        $import->commodityid = $req->get('commodityid');
+        $commodity = DB::select('select * from commodities where id = ?', [$req->get('commodityid')]);
+        $import->overall = $req->get('number') * $commodity[0]->avgin;
+        $import->save();
+        SaleController::updateScore(0,$import->overall);
+        return Redirect::route('import');
+    }
+
+    public function findImports(Request $req)
+    {
+        $this->validate($req,[
+            'by' => 'required',
+            'content' => 'required',
+        ]);
+        if($req->get('by') == 1){
+            $result = DB::select('select * from imports where clientname = ?', [$req->get('content')]);
+        }else{
+            $tmp = DB::select('select * from commodities where name = ?',[$req->get('content')]);
+            $result = DB::select('select * from imports where commodityid= ?', [$tmp[0]->id]);
+        }
+
+        return view('JXC.sale.import', ['name' => Auth::user()->name, 'imports' => $result]);
+    }
+
+    public function showImportDetail($id)
+    {
+        $import = Import::find($id);
+        $com = Commodity::find($import->commodityid);
+        return view('JXC.sale.importDetail', ['name' => Auth::user()->name, 'import' => $import, 'com' => $com]);
+    }
+
+    public function updateScore($score,$num){
+        $user = User::find(Auth::user()->id);
+        if($num == 0){
+            $score = 1;
+        }else{
+            $score = $num / 1000;
+        }
+        $user->count=$user->count+$score;
+        $user->save();
+    }
+
+    //销售管理
+    public function getExports()
+    {
+        $exports = DB::select('select * from exports');
+        return view('JXC.sale.export', ['name' => Auth::user()->name, '$exports' => $exports]);
+    }
+
+    public function getAddExports()
+    {
+        $clients = DB::select('select * from clients');
+        $commodities = DB::select('select * from commodities');
+        return view('JXC.sale.addImport', ['name' => Auth::user()->name, 'clients' => $clients, 'commodities' => $commodities]);
+    }
+
+//  销售单通过审批后,会更改库存数据和客户的应收应付数据
+    public function addExports(Request $req)
+    {
+        $this->validate($req,[
+            'clientid' => 'required',
+            'type' => 'required',
+            'commodityid' => 'required',
+            'number' => 'required',
+        ]);
+
+        $import = new Import();
+        $import->status = $req->get('status');
+        $import->type = $req->get('type');
+
+        $c = DB::select('select * from clients where id = ?', [$req->get('clientid')]);
+        $import->clientname = $c[0]->name;
+        $import->clientid = $req->get('clientid');
+
+        $import->operatorid = $req->get('operatorid');
+        $import->operatorname = $req->get('operatorname');
+        $import->number = $req->get('number');
+        $import->commodityid = $req->get('commodityid');
+        $commodity = DB::select('select * from commodities where id = ?', [$req->get('commodityid')]);
+        $import->overall = $req->get('number') * $commodity[0]->avgin;
+        $import->save();
+        SaleController::updateScore(0,$import->overall);
+        return Redirect::route('import');
+    }
+
+    public function findExports(Request $req)
+    {
+        $this->validate($req,[
+            'by' => 'required',
+            'content' => 'required',
+        ]);
+        if($req->get('by') == 1){
+            $result = DB::select('select * from imports where clientname = ?', [$req->get('content')]);
+        }else{
+            $tmp = DB::select('select * from commodities where name = ?',[$req->get('content')]);
+            $result = DB::select('select * from imports where commodityid= ?', [$tmp[0]->id]);
+        }
+
+        return view('JXC.sale.import', ['name' => Auth::user()->name, 'imports' => $result]);
+    }
+
+    public function showExportDetail($id)
+    {
+        $import = Import::find($id);
+        $com = Commodity::find($import->commodityid);
+        return view('JXC.sale.importDetail', ['name' => Auth::user()->name, 'import' => $import, 'com' => $com]);
+    }
+
+
 }
