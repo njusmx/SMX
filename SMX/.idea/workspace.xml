@@ -22,52 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SaleController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SaleController.php">
+      <file leaf-file-name="interestAnalysis.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/interestAnalysis.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="203" column="11" selection-start-line="203" selection-start-column="11" selection-end-line="203" selection-end-column="11" />
-              <folding>
-                <element signature="e#40#55#0#PHP" expanded="true" />
-                <element signature="e#527#648#0#PHP" expanded="false" />
-                <element signature="e#654#1522#0#PHP" expanded="false" />
-                <element signature="e#1528#1916#0#PHP" expanded="false" />
-                <element signature="e#1934#2125#0#PHP" expanded="false" />
-                <element signature="e#2131#2423#0#PHP" expanded="false" />
-                <element signature="e#2462#3529#0#PHP" expanded="false" />
-                <element signature="e#3535#4151#0#PHP" expanded="false" />
-                <element signature="e#4157#4411#0#PHP" expanded="false" />
-                <element signature="e#4417#4681#0#PHP" expanded="false" />
-                <marker date="1466178948000" expanded="true" signature="398:419" ph="select * fro... clients" />
-                <marker date="1466178948000" expanded="true" signature="1724:1773" ph="select * fro... clients" />
-                <marker date="1466178948000" expanded="true" signature="2000:2021" ph="select * fro... imports" />
-                <marker date="1466178948000" expanded="true" signature="2200:2221" ph="select * fro... clients" />
-                <marker date="1466178948000" expanded="true" signature="2260:2285" ph="select * fro... commodities" />
-                <marker date="1466178948000" expanded="true" signature="2850:2864" ph="select * fro... commodities" />
-                <marker date="1466178948000" expanded="true" signature="2850:2872" ph="select * fro... commodities" />
-                <marker date="1466178948000" expanded="true" signature="2850:2884" ph="select * fro... clients" />
-                <marker date="1466178948000" expanded="true" signature="3259:3297" ph="select * fro... commodities" />
-                <marker date="1466178948000" expanded="true" signature="3763:3805" ph="select * fro... imports" />
-                <marker date="1466178948000" expanded="true" signature="3879:3919" ph="select * fro... commodities" />
-                <marker date="1466178948000" expanded="true" signature="3980:4022" ph="select * fro... imports" />
-                <marker date="1466178948000" expanded="true" signature="4764:4785" ph="select * fro... imports" />
-                <marker date="1466178948000" expanded="true" signature="4964:4985" ph="select * fro... clients" />
-                <marker date="1466178948000" expanded="true" signature="5024:5049" ph="select * fro... commodities" />
-                <marker date="1466178948000" expanded="true" signature="5612:5646" ph="select * fro... clients" />
-                <marker date="1466178948000" expanded="true" signature="5965:6003" ph="select * fro... commodities" />
-                <marker date="1466178948000" expanded="true" signature="6686:6728" ph="select * fro... imports" />
-                <marker date="1466178948000" expanded="true" signature="6802:6842" ph="select * fro... commodities" />
-                <marker date="1466178948000" expanded="true" signature="6903:6945" ph="select * fro... imports" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="exportDetail.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/exportDetail.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="194" column="95" selection-start-line="194" selection-start-column="95" selection-end-line="194" selection-end-column="95" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -78,27 +37,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" />
-        <option value="$PROJECT_DIR$/resources/views/JXC/sale/findclient.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/JXC/sale/findresult.blade.php" />
-        <option value="$PROJECT_DIR$/public/assets/css/sign.css" />
-        <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/JXC/register.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/UserRegisterRequest.php" />
-        <option value="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" />
-        <option value="$PROJECT_DIR$/app/User.php" />
-        <option value="$PROJECT_DIR$/resources/views/JXC/login.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/JXC/stock/addcategory.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/CategoryRequest.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2016_06_02_090343_create_commodities_table.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" />
-        <option value="$PROJECT_DIR$/app/Commodity.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/CommodityEditController.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2016_06_16_065100_create_reportlossforms_table.php" />
-        <option value="$PROJECT_DIR$/vendor/composer/autoload_static.php" />
-        <option value="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" />
-        <option value="$PROJECT_DIR$/app/StockReportForm.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_06_16_071541_create_stockreportforms_table.php" />
         <option value="$PROJECT_DIR$/resources/views/JXC/stock/more.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
@@ -109,15 +47,12 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CommodityController.php" />
         <option value="$PROJECT_DIR$/resources/views/JXC/commodity/editCommodity.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/StockController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_06_02_100810_create_clients_table.php" />
         <option value="$PROJECT_DIR$/resources/views/JXC/commodity/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/JXC/stock/editCategory.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CategoryEditController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" />
-        <option value="$PROJECT_DIR$/resources/views/JXC/stock/correct.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_06_17_050555_create_imports_table.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/resources/views/JXC/sale/index.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_06_17_124242_create_exports_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SaleController.php" />
@@ -128,7 +63,31 @@
         <option value="$PROJECT_DIR$/resources/views/JXC/sale/editclient.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/JXC/sale/import.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/JXC/sale/importDetail.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/JXC/register.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/JXC/sale/exportDetail.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ManagerController.php" />
+        <option value="$PROJECT_DIR$/resources/views/JXC/stock/correct.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/StockController.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2016_06_19_100033_create_packages_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2016_06_19_100054_create_presents_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2016_06_19_100132_create_discounts_table.php" />
+        <option value="$PROJECT_DIR$/resources/views/JXC/manager/Strategy.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2016_06_19_100114_create_coupons_table.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/StrategyController.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/app/Http/AnalysisController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AnalysisController.php" />
+        <option value="$PROJECT_DIR$/resources/views/JXC/manager/strategy.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/JXC/manager/presentDetail.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/JXC/manager/packageDetail.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/JXC/manager/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/JXC/manager/formsDetail.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/JXC/manager/discountDetail.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/JXC/manager/couponDetail.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/JXC/manager/addPresent.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/JXC/manager/addPackage.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/JXC/manager/addDiscount.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/JXC/manager/addCoupon.blade.php" />
       </list>
     </option>
   </component>
@@ -150,10 +109,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="185" />
-    <option name="y" value="42" />
-    <option name="width" value="1219" />
-    <option name="height" value="873" />
+    <option name="x" value="327" />
+    <option name="y" value="30" />
+    <option name="width" value="1367" />
+    <option name="height" value="808" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -180,7 +139,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -261,7 +219,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sale" />
+              <option name="myItemId" value="manager" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -386,6 +344,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -396,6 +355,9 @@
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Http/Controllers" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/app/Http/Requests" />
@@ -452,21 +414,24 @@
       <workItem from="1465911914936" duration="8774000" />
       <workItem from="1465957154587" duration="1984000" />
       <workItem from="1465972279315" duration="40258000" />
-      <workItem from="1466160924378" duration="10791000" />
+      <workItem from="1466160924378" duration="12926000" />
+      <workItem from="1466215345969" duration="11126000" />
+      <workItem from="1466330915629" duration="4435000" />
+      <workItem from="1466335801335" duration="9813000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74538000" />
+    <option name="totallyTimeSpent" value="102047000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="185" y="42" width="1219" height="873" extended-state="0" />
+    <frame x="327" y="30" width="1367" height="808" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24774405" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22092173" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16044776" sideWeight="0.509434" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17456022" sideWeight="0.509434" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -495,6 +460,11 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="5" />
@@ -502,196 +472,136 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/addExport.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+        <state relative-caret-position="-862">
+          <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/export.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-783">
+          <caret line="65" column="39" selection-start-line="65" selection-start-column="39" selection-end-line="65" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LoginController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="330">
+          <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/Authenticate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_16_065100_create_reportlossforms_table.php" />
-    <entry file="file://$PROJECT_DIR$/vendor/composer/autoload_classmap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/composer/autoload_static.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7467">
-          <caret line="271" column="30" selection-start-line="271" selection-start-column="30" selection-end-line="271" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_02_090343_create_commodities_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="25" column="41" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Client.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Category.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="3" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Commodity.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/StockReportForm.php" />
-    <entry file="file://$PROJECT_DIR$/app/Stockreportforms.php" />
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_16_071541_create_stockreportforms_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Stockreportfroms.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/stock/less.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="66" column="51" selection-start-line="66" selection-start-column="51" selection-end-line="66" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/stock/more.blade.php" />
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/stock/show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/findclient.blade.php" />
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/findresult.blade.php" />
     <entry file="file://$PROJECT_DIR$/resources/views/JXC/register.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="73" column="92" selection-start-line="73" selection-start-column="92" selection-end-line="73" selection-end-column="92" />
+        <state relative-caret-position="195">
+          <caret line="80" column="34" selection-start-line="80" selection-start-column="34" selection-end-line="80" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/login.blade.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_17_124242_create_exports_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+        <state relative-caret-position="347">
+          <caret line="27" column="33" selection-start-line="15" selection-start-column="12" selection-end-line="27" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/stock/index.blade.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_17_050555_create_imports_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="207" column="80" selection-start-line="207" selection-start-column="80" selection-end-line="207" selection-end-column="80" />
+        <state relative-caret-position="347">
+          <caret line="25" column="33" selection-start-line="15" selection-start-column="12" selection-end-line="25" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/commodity/editCommodity.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/editclient.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="218" column="50" selection-start-line="208" selection-start-column="44" selection-end-line="218" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/stock/editCategory.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/stock/correct.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5055">
-          <caret line="337" column="90" selection-start-line="0" selection-start-column="0" selection-end-line="553" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/stock/check.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="186" column="62" selection-start-line="152" selection-start-column="56" selection-end-line="186" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CommodityEditController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+        <state relative-caret-position="443">
+          <caret line="195" column="35" selection-start-line="153" selection-start-column="28" selection-end-line="195" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CategoryEditController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="22" column="51" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="51" />
+        <state relative-caret-position="390">
+          <caret line="32" column="26" selection-start-line="29" selection-start-column="8" selection-end-line="32" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CategoryController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/exportDetail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        <state relative-caret-position="422">
+          <caret line="223" column="75" selection-start-line="222" selection-start-column="40" selection-end-line="223" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/importDetail.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="196" column="71" selection-start-line="195" selection-start-column="40" selection-end-line="196" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ManagerController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="110" column="86" selection-start-line="110" selection-start-column="86" selection-end-line="110" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_16_071541_create_stockreportforms_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="21" column="40" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/stock/correct.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-418">
+          <caret line="162" column="102" selection-start-line="162" selection-start-column="102" selection-end-line="162" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/stock/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2003">
+          <caret line="389" column="15" selection-start-line="389" selection-start-column="0" selection-end-line="390" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StockController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="1" selection-start-line="2" selection-start-column="0" selection-end-line="15" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Export.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Import.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Discount.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ClientController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="19" column="0" selection-start-line="14" selection-start-column="4" selection-end-line="19" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -702,18 +612,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Import.php">
+    <entry file="file://$PROJECT_DIR$/app/Package.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/import.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="239" column="18" selection-start-line="141" selection-start-column="12" selection-end-line="239" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/commodity/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="281" column="50" selection-start-line="217" selection-start-column="43" selection-end-line="281" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="95" column="42" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/addImport.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4545">
+          <caret line="303" column="50" selection-start-line="232" selection-start-column="44" selection-end-line="303" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_02_090343_create_commodities_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CommodityController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="55" column="27" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+        <state relative-caret-position="117">
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
           <folding>
             <element signature="e#119#147#0#PHP" expanded="true" />
             <marker date="1466074620000" expanded="true" signature="430:455" ph="select * fro... commodities" />
@@ -723,174 +670,214 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/commodity/index.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SaleController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="278" column="62" selection-start-line="268" selection-start-column="56" selection-end-line="278" selection-end-column="62" />
+        <state relative-caret-position="195">
+          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ClientController.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_19_100033_create_packages_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        <state relative-caret-position="327">
+          <caret line="23" column="32" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StockController.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_19_100054_create_presents_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
+        <state relative-caret-position="132">
+          <caret line="14" column="61" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_19_100132_create_discounts_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_19_100114_create_coupons_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="22" column="33" selection-start-line="15" selection-start-column="12" selection-end-line="22" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StrategyController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
-            <marker date="1466074922000" expanded="true" signature="373:397" ph="select * fro... categories" />
-            <marker date="1466074922000" expanded="true" signature="583:608" ph="select * fro... commodities" />
-            <marker date="1466074922000" expanded="true" signature="794:819" ph="select * fro... commodities" />
-            <marker date="1466074922000" expanded="true" signature="1008:1052" ph="select * fro... stockreportforms" />
-            <marker date="1466074922000" expanded="true" signature="1008:1053" ph="select * fro... stockreportfroms" />
-            <marker date="1466074922000" expanded="true" signature="1105:1150" ph="select * fro... stockreportfroms" />
-            <marker date="1466074922000" expanded="true" signature="1390:1440" ph="select * fro... commodities" />
-            <marker date="1466074922000" expanded="true" signature="1477:1527" ph="select * fro... commodities" />
-            <marker date="1466074922000" expanded="true" signature="1933:1986" ph="select * fro... commodities" />
+            <element signature="e#6#84#0#PHP" expanded="true" />
+            <marker date="1466349993000" expanded="true" signature="454:476" ph="select * fro... packages" />
+            <marker date="1466349993000" expanded="true" signature="512:534" ph="select * fro... presents" />
+            <marker date="1466349993000" expanded="true" signature="569:590" ph="select * fro... coupns" />
+            <marker date="1466349993000" expanded="true" signature="627:650" ph="select * fro... discounts" />
+            <marker date="1466349993000" expanded="true" signature="2589:2614" ph="select * fro... packages" />
+            <marker date="1466349993000" expanded="true" signature="3547:3585" ph="select * fro... commodities" />
+            <marker date="1466349993000" expanded="true" signature="3659:3697" ph="select * fro... commodities" />
+            <marker date="1466349993000" expanded="true" signature="4072:4097" ph="select * fro... commodities" />
+            <marker date="1466349993000" expanded="true" signature="5216:5241" ph="select * fro... commodities" />
+            <marker date="1466349993000" expanded="true" signature="6113:6138" ph="select * fro... commodities" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_17_050555_create_imports_table.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CategoryController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="25" column="33" selection-start-line="15" selection-start-column="12" selection-end-line="25" selection-end-column="33" />
-          <folding />
+        <state relative-caret-position="240">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+            <marker date="1466074542000" expanded="true" signature="349:373" ph="select * fro... categories" />
+            <marker date="1466074542000" expanded="true" signature="745:769" ph="select * fro... categories" />
+            <marker date="1466074542000" expanded="true" signature="1364:1401" ph="select * fro... categories" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnalysisController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+          <folding>
+            <element signature="e#6#84#0#PHP" expanded="true" />
+            <element signature="e#119#147#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="71" column="27" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="27" />
+        <state relative-caret-position="513">
+          <caret line="127" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_17_124242_create_exports_table.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/strategy.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="27" column="33" selection-start-line="15" selection-start-column="12" selection-end-line="27" selection-end-column="33" />
+        <state relative-caret-position="417">
+          <caret line="134" column="25" selection-start-line="121" selection-start-column="20" selection-end-line="134" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/addclient.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/packageDetail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="138" column="41" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+        <state relative-caret-position="378">
+          <caret line="136" column="25" selection-start-line="136" selection-start-column="25" selection-end-line="136" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/addExport.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-862">
-          <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
+        <state relative-caret-position="468">
+          <caret line="134" column="25" selection-start-line="134" selection-start-column="25" selection-end-line="134" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/addImport.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/formsDetail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="138" column="41" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+        <state relative-caret-position="483">
+          <caret line="134" column="25" selection-start-line="134" selection-start-column="25" selection-end-line="134" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/editclient.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/discountDetail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1127">
-          <caret line="138" column="41" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+        <state relative-caret-position="528">
+          <caret line="136" column="25" selection-start-line="136" selection-start-column="25" selection-end-line="136" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/export.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/couponDetail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-783">
-          <caret line="65" column="39" selection-start-line="65" selection-start-column="39" selection-end-line="65" selection-end-column="39" />
-          <folding>
-            <element signature="n#style#0;n#form#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/import.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
+        <state relative-caret-position="528">
+          <caret line="136" column="25" selection-start-line="136" selection-start-column="25" selection-end-line="136" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/importDetail.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/addPresent.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
+        <state relative-caret-position="528">
+          <caret line="136" column="25" selection-start-line="136" selection-start-column="25" selection-end-line="136" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/index.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/addCoupon.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="137" column="20" selection-start-line="137" selection-start-column="20" selection-end-line="137" selection-end-column="20" />
+        <state relative-caret-position="486">
+          <caret line="136" column="25" selection-start-line="136" selection-start-column="25" selection-end-line="136" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SaleController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/addDiscount.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="203" column="11" selection-start-line="203" selection-start-column="11" selection-end-line="203" selection-end-column="11" />
-          <folding>
-            <element signature="e#40#55#0#PHP" expanded="true" />
-            <element signature="e#527#648#0#PHP" expanded="false" />
-            <element signature="e#654#1522#0#PHP" expanded="false" />
-            <element signature="e#1528#1916#0#PHP" expanded="false" />
-            <element signature="e#1934#2125#0#PHP" expanded="false" />
-            <element signature="e#2131#2423#0#PHP" expanded="false" />
-            <element signature="e#2462#3529#0#PHP" expanded="false" />
-            <element signature="e#3535#4151#0#PHP" expanded="false" />
-            <element signature="e#4157#4411#0#PHP" expanded="false" />
-            <element signature="e#4417#4681#0#PHP" expanded="false" />
-            <marker date="1466178948000" expanded="true" signature="398:419" ph="select * fro... clients" />
-            <marker date="1466178948000" expanded="true" signature="1724:1773" ph="select * fro... clients" />
-            <marker date="1466178948000" expanded="true" signature="2000:2021" ph="select * fro... imports" />
-            <marker date="1466178948000" expanded="true" signature="2200:2221" ph="select * fro... clients" />
-            <marker date="1466178948000" expanded="true" signature="2260:2285" ph="select * fro... commodities" />
-            <marker date="1466178948000" expanded="true" signature="2850:2864" ph="select * fro... commodities" />
-            <marker date="1466178948000" expanded="true" signature="2850:2872" ph="select * fro... commodities" />
-            <marker date="1466178948000" expanded="true" signature="2850:2884" ph="select * fro... clients" />
-            <marker date="1466178948000" expanded="true" signature="3259:3297" ph="select * fro... commodities" />
-            <marker date="1466178948000" expanded="true" signature="3763:3805" ph="select * fro... imports" />
-            <marker date="1466178948000" expanded="true" signature="3879:3919" ph="select * fro... commodities" />
-            <marker date="1466178948000" expanded="true" signature="3980:4022" ph="select * fro... imports" />
-            <marker date="1466178948000" expanded="true" signature="4764:4785" ph="select * fro... imports" />
-            <marker date="1466178948000" expanded="true" signature="4964:4985" ph="select * fro... clients" />
-            <marker date="1466178948000" expanded="true" signature="5024:5049" ph="select * fro... commodities" />
-            <marker date="1466178948000" expanded="true" signature="5612:5646" ph="select * fro... clients" />
-            <marker date="1466178948000" expanded="true" signature="5965:6003" ph="select * fro... commodities" />
-            <marker date="1466178948000" expanded="true" signature="6686:6728" ph="select * fro... imports" />
-            <marker date="1466178948000" expanded="true" signature="6802:6842" ph="select * fro... commodities" />
-            <marker date="1466178948000" expanded="true" signature="6903:6945" ph="select * fro... imports" />
-          </folding>
+        <state relative-caret-position="528">
+          <caret line="136" column="25" selection-start-line="136" selection-start-column="25" selection-end-line="136" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/sale/exportDetail.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/addPackage.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="194" column="95" selection-start-line="194" selection-start-column="95" selection-end-line="194" selection-end-column="95" />
+        <state relative-caret-position="528">
+          <caret line="136" column="25" selection-start-line="136" selection-start-column="25" selection-end-line="136" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/presentDetail.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="136" column="25" selection-start-line="136" selection-start-column="25" selection-end-line="136" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/employeeAnalysis.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/saleAnalysis.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/clientAnalysis.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/interestAnalysis.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

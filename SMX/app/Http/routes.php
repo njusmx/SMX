@@ -86,3 +86,42 @@ Route::post('sale/export/add', 'SaleController@addExports');
 Route::post('sale/export/find', 'SaleController@findExports');
 Route::get('sale/export/show/{id}', 'SaleController@showExportDetail');
 
+
+//总经理
+Route::get('manager', [
+    'as' => 'manager', 'uses' => 'ManagerController@index']);
+//单据审批
+Route::post('manager/request/approve', 'ManagerController@postApprove');
+Route::post('manager/request/find', 'ManagerController@findReports');
+Route::get('manager/import/edit/{id}', 'ManagerController@getImportDetail');
+Route::get('manager/export/edit/{id}', 'ManagerController@getExportDetail');
+Route::get('manager/stockreportform/edit/{id}', 'ManagerController@getStockreportformDetail');
+Route::post('manager/request/edit', 'ManagerEditController@modifyCategory');
+//策略制定
+Route::get('manager/strategy',[
+    'as' => 'strategy', 'uses' => 'StrategyController@getStrategy']);
+Route::get('manager/strategy/package/show/{id}', 'StrategyController@getPackageDetail');
+Route::get('manager/strategy/present/show/{id}', 'StrategyController@getPresentDetail');
+Route::get('manager/strategy/coupon/show/{id}', 'StrategyController@getCouponDetail');
+Route::get('manager/strategy/discount/show/{id}', 'StrategyController@getDiscountDetail');
+
+Route::post('manager/strategy/delete', 'StrategyController@deleteStrategy');
+//特价包
+Route::get('manager/strategy/package', 'StrategyController@getAddPackage');
+Route::post('manager/strategy/package', 'StrategyController@postAddPackage');
+//赠品赠送
+Route::get('manager/strategy/present', 'StrategyController@getAddPresent');
+Route::post('manager/strategy/present', 'StrategyController@postAddPresent');
+//代金券赠送
+Route::get('manager/strategy/coupon', 'StrategyController@getAddCoupon');
+Route::post('manager/strategy/coupon', 'StrategyController@postAddCoupon');
+//打折促销
+Route::get('manager/strategy/discount', 'StrategyController@getAddDiscount');
+Route::post('manager/strategy/discount', 'StrategyController@postAddDiscount');
+
+//业绩查看
+Route::get('manager/analysis/client', 'ManagerController@getClientAnalysis');
+Route::get('manager/analysis/sale', 'ManagerController@getSaleAnalysis');
+Route::get('manager/analysis/commodity', 'ManagerController@getCommodityAnalysis');
+Route::get('manager/analysis/employee', 'ManagerController@getEmployeeAnalysis');
+Route::get('manager/analysis/interest', 'ManagerController@getInterestAnalysis');

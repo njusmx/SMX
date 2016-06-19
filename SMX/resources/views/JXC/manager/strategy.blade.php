@@ -63,7 +63,7 @@
             </div>
             <div class="profile-body dropdown">
                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>{{Auth::user()->name}}<span class="caret"></span></h4></a>
-                <small class="title">进货销售人员</small>
+                <small class="title">总经理</small>
                 <h4>业绩点:<span>{{Auth::user()->count}}</span></h4>
 
 
@@ -89,41 +89,48 @@
             <h5 class="sidebar-header">Navigation</h5>
             <ul class="nav nav-pills nav-stacked">
                 <li class="nav-dropdown">
-                    <a href="#" title="客户管理">
-                        <i class="fa fa-fw fa-shopping-cart"></i>客户管理
+                    <a href="/manager" title="审批单据">
+                        <i class="fa fa-fw fa-shopping-cart"></i>审批单据
                     </a>
-                    <ul class=" nav-sub">
-                        <li>
-                            <a  href="/sale" title="所有客户" >所有客户</a>
-                        </li>
-                        <li>
-                            <a  href="/sale/client/add" title="添加客户">添加客户</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class=" nav-dropdown">
-                    <a href="/sale/import" title="进货管理" >
-                        <i class="fa  fa-fw fa-tachometer"></i>进货管理
-                    </a>
-                    <ul class=" nav-sub">
-                        <li>
-                            <a  href="/sale/import" title="所有进货单" >所有进货单</a>
-                        </li>
-                        <li>
-                            <a  href="/sale/import/add" title="创建进货单">创建进货单</a>
-                        </li>
-                    </ul>
                 </li>
                 <li class=" nav-dropdown  open active">
-                    <a href="/sale/export" title="销售管理" >
-                        <i class="fa  fa-fw fa-tachometer"></i>销售管理
+                    <a href="/manager/strategy" title="策略制定" >
+                        <i class="fa  fa-fw fa-tachometer"></i>策略制定
                     </a>
                     <ul class=" nav-sub">
-                        <li  class="active">
-                            <a  href="/sale/export" title="所有销售单" >所有销售单</a>
+                        <li class="active">
+                            <a  href="/manager/strategy" title="所有策略" >所有策略</a>
                         </li>
                         <li>
-                            <a  href="/sale/export/add" title="创建销售单">创建销售单</a>
+                            <a  href="/manager/strategy/package" title="创建特价包">创建特价包</a>
+                        </li>
+                        <li>
+                            <a  href="/manager/strategy/coupon" title="创建代金券赠送策略">创建代金券赠送策略</a>
+                        </li>
+                        <li>
+                            <a  href="/manager/strategy/present" title="创建赠品赠送策略">创建赠品赠送策略</a>
+                        </li>
+                        <li>
+                            <a  href="/manager/strategy/discount" title="创建打折促销策略">创建打折促销策略</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=" nav-dropdown ">
+                    <a href="/sale/export" title="业绩查看" >
+                        <i class="fa  fa-fw fa-tachometer"></i>业绩查看
+                    </a>
+                    <ul class=" nav-sub">
+                        <li>
+                            <a  href="/manager/analysis/sale" title="销售分析" >销售分析</a>
+                        </li>
+                        <li>
+                            <a  href="/manager/analysis/client" title="客户分析">客户分析</a>
+                        </li>
+                        <li>
+                            <a  href="/manager/analysis/employee" title="员工业绩">员工业绩</a>
+                        </li>
+                        <li>
+                            <a  href="/manager/analysis/interest" title="利润分析">利润分析</a>
                         </li>
                     </ul>
                 </li>
@@ -135,15 +142,15 @@
     <!--main content start-->
     <section class="main-content-wrapper">
         <div class="pageheader">
-            <h1>销售管理</h1>
-            <p class="description">这里展示销售数据 </p>
+            <h1>业务管理</h1>
+            <p class="description">这里展示业务数据 </p>
         </div>
         <section id="main-content" class="animated fadeInUp">
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h2  style="color: #fff;">单据详情</h2>
+                            <h2  style="color: #fff;">所有促销策略</h2>
                             <div class="actions pull-right">
                                 <i class="fa fa-expand"></i>
                                 <i class="fa fa-chevron-down"></i>
@@ -151,88 +158,127 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 col-md-2 control-label" >单据编号</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" name="name" class="form-control" readonly="readonly" value={{$export->id}} >
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 col-md-2 control-label">进货商</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" name="name" class="form-control" readonly="readonly" value={{$export->clientname}} >
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 col-md-2 control-label">操作员</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" name="name" class="form-control" readonly="readonly" value={{$export->operatorname}} >
-                                        </div>
-                                    </div>
-                                    @if($export->type)
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-2 control-label">原始总价</label>
-                                            <div class="col-sm-6">
-                                                <input type="text" name="name" class="form-control" readonly="readonly" value={{$export->initoverall}} >
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-2 control-label">折让金额</label>
-                                            <div class="col-sm-6">
-                                                <input type="text" name="name" class="form-control" readonly="readonly" value={{$export->discount}} >
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-2 control-label">折让后总价</label>
-                                            <div class="col-sm-6">
-                                                <input type="text" name="name" class="form-control" readonly="readonly" value={{$export->overall}} >
-                                            </div>
-                                        </div>
-                                        @else
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-2 control-label">退货总额</label>
-                                            <div class="col-sm-6">
-                                                <input type="text" name="name" class="form-control" readonly="readonly" value={{$export->overall}} >
-                                            </div>
-                                        </div>
-                                    @endif
-                                </div>
-                            </form>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <td>商品编号</td>
-                                    <td>商品名称</td>
-                                    <td>型号</td>
-                                    <td>数量</td>
-                                    <td>单价</td>
-                                    <td>金额</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @if ($export)
-                                    <tr>
-                                        <td>{{ $com->id }}</td>
-                                        <td>{{ $com->name }}</td>
-                                        <td>{{ $com->type }}</td>
-                                        <td>{{ $export->number }}</td>
-                                        <td>{{ $com->avgout }}</td>
-                                        <td>{{ $export->initoverall }}</td>
-                                    </tr>
-                                @else
-                                    <div class="alert alert-danger alert-dismissable">
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                        <strong>没有进货相关单据,请管理员添加</strong>
-                                    </div>
-                                @endif
-                                </tbody>
-                            </table>
-                        </div>
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
 
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <td>策略编号</td>
+                                                <td>促销开始时间</td>
+                                                <td>促销结束时间</td>
+                                                <td>促销策略类型</td>
+                                                <td>操作</td>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @if (count($packages)+count($presents)+count($coupons)+count($discounts))
+                                                @if(count($packages))
+                                                    @foreach ($packages as $package)
+                                                        <tr>
+                                                            <td>TJB-{{ $package->id }}</td>
+                                                            <td>{{ $package->start }}</td>
+                                                            <td>{{ $package->end }}</td>
+                                                            <td>特价包策略</td>
+                                                            <td>
+                                                                <form role="form" action="{{ url('manager/strategy/delete')}}" style='display: inline' method="post">
+                                                                    <input type="hidden" name="strategy" value="特价包">
+                                                                    <input type="hidden" name="id" value={{ $package->id }}>
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <button class="btn btn-sm btn-info">删除策略</button>
+                                                                </form>
+                                                                <form action="{{ url('manager/strategy/package/show/'.$package->id) }}" style='display: inline' method="post">
+                                                                    <input type="hidden" name="_method" value="GET">
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <button class="btn btn-sm btn-danger">查看详情</button>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
+                                                @if(count($presents))
+                                                    @foreach ($presents as $present)
+                                                        <tr>
+                                                            <td>ZPZS-{{ $present->id }}</td>
+                                                            <td>{{ $present->start }}</td>
+                                                            <td>{{ $present->end }}</td>
+                                                            <td>赠品赠送策略</td>
+                                                            <td>
+                                                                <form role="form" action="{{ url('manager/strategy/delete')}}" style='display: inline' method="post">
+                                                                    <input type="hidden" name="strategy" value="赠品赠送">
+                                                                    <input type="hidden" name="id" value={{ $present->id }}>
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <button class="btn btn-sm btn-info">删除策略</button>
+                                                                </form>
+                                                                <form action="{{ url('manager/strategy/present/show/'.$present->id) }}" style='display: inline' method="post">
+                                                                    <input type="hidden" name="_method" value="GET">
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <button class="btn btn-sm btn-danger">查看详情</button>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
+                                                @if(count($coupons))
+                                                    @foreach ($coupons as $coupon)
+                                                        <tr>
+                                                            <td>DJQ-{{ $coupon->id }}</td>
+                                                            <td>{{ $coupon->start }}</td>
+                                                            <td>{{ $coupon->end }}</td>
+                                                            <td>代金券赠送策略</td>
+                                                            <td>
+                                                                <form role="form" action="{{ url('manager/strategy/delete')}}" style='display: inline' method="post">
+                                                                    <input type="hidden" name="strategy" value="代金券赠送">
+                                                                    <input type="hidden" name="id" value={{ $coupon->id }}>
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <button class="btn btn-sm btn-info">删除策略</button>
+                                                                </form>
+                                                                <form action="{{ url('manager/strategy/coupon/show/'.$coupon->id) }}" style='display: inline' method="post">
+                                                                    <input type="hidden" name="_method" value="GET">
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <button class="btn btn-sm btn-danger">查看详情</button>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
+                                                @if(count($discounts))
+                                                    @foreach ($discounts as $discount)
+                                                        <tr>
+                                                            <td>DJQ-{{ $discount->id }}</td>
+                                                            <td>{{ $discount->start }}</td>
+                                                            <td>{{ $discount->end }}</td>
+                                                            <td>打折促销策略</td>
+                                                            <td>
+                                                                <form role="form" action="{{ url('manager/strategy/delete')}}" style='display: inline' method="post">
+                                                                    <input type="hidden" name="strategy" value="打折促销">
+                                                                    <input type="hidden" name="id" value={{ $discount->id }}>
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <button class="btn btn-sm btn-info">删除策略</button>
+                                                                </form>
+                                                                <form action="{{ url('manager/strategy/discount/show/'.$discount->id) }}" style='display: inline' method="post">
+                                                                    <input type="hidden" name="_method" value="GET">
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <button class="btn btn-sm btn-danger">查看详情</button>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
+
+                                            @else
+                                                <div class="alert alert-danger alert-dismissable">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                    <strong>没有促销策略列表,请管理员添加</strong>
+                                                </div>
+                                            @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

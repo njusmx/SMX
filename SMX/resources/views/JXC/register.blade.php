@@ -81,11 +81,6 @@
                             </div>
                             <div>
                                 <label class="radio-inline" style="padding-left:0px;">
-                                    <input type="radio" value="3" name="type" style="width: 15px!important; padding-left: 0px!important; font-size: 18px;"> 财务人员
-                                </label>
-                            </div>
-                            <div>
-                                <label class="radio-inline" style="padding-left:0px;">
                                     <input type="radio" value="4" name="type" style="width: 15px!important; padding-left: 0px!important; font-size: 18px;"> 总经理
                                 </label>
                             </div>

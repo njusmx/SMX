@@ -63,7 +63,7 @@
             </div>
             <div class="profile-body dropdown">
                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>{{Auth::user()->name}}<span class="caret"></span></h4></a>
-                <small class="title">进货销售人员</small>
+                <small class="title">总经理</small>
                 <h4>业绩点:<span>{{Auth::user()->count}}</span></h4>
 
 
@@ -88,42 +88,49 @@
         <nav>
             <h5 class="sidebar-header">Navigation</h5>
             <ul class="nav nav-pills nav-stacked">
+                <li class="nav-dropdown   open active">
+                    <a href="/manager" title="审批单据">
+                        <i class="fa fa-fw fa-shopping-cart"></i>审批单据
+                    </a>
+                </li>
                 <li class="nav-dropdown">
-                    <a href="#" title="客户管理">
-                        <i class="fa fa-fw fa-shopping-cart"></i>客户管理
+                    <a href="/manager/strategy" title="策略制定" >
+                        <i class="fa  fa-fw fa-tachometer"></i>策略制定
                     </a>
                     <ul class=" nav-sub">
-                        <li>
-                            <a  href="/sale" title="所有客户" >所有客户</a>
+                        <li class="active">
+                            <a  href="/manager/strategy" title="所有策略" >所有策略</a>
                         </li>
                         <li>
-                            <a  href="/sale/client/add" title="添加客户">添加客户</a>
+                            <a  href="/manager/strategy/package" title="创建特价包">创建特价包</a>
+                        </li>
+                        <li>
+                            <a  href="/manager/strategy/coupon" title="创建代金券赠送策略">创建代金券赠送策略</a>
+                        </li>
+                        <li>
+                            <a  href="/manager/strategy/present" title="创建赠品赠送策略">创建赠品赠送策略</a>
+                        </li>
+                        <li>
+                            <a  href="/manager/strategy/discount" title="创建打折促销策略">创建打折促销策略</a>
                         </li>
                     </ul>
                 </li>
-                <li class=" nav-dropdown">
-                    <a href="/sale/import" title="进货管理" >
-                        <i class="fa  fa-fw fa-tachometer"></i>进货管理
+                <li class=" nav-dropdown ">
+                    <a href="/sale/export" title="业绩查看" >
+                        <i class="fa  fa-fw fa-tachometer"></i>业绩查看
                     </a>
                     <ul class=" nav-sub">
                         <li>
-                            <a  href="/sale/import" title="所有进货单" >所有进货单</a>
+                            <a  href="/manager/analysis/sale" title="销售分析" >销售分析</a>
                         </li>
                         <li>
-                            <a  href="/sale/import/add" title="创建进货单">创建进货单</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class=" nav-dropdown  open active">
-                    <a href="/sale/export" title="销售管理" >
-                        <i class="fa  fa-fw fa-tachometer"></i>销售管理
-                    </a>
-                    <ul class=" nav-sub">
-                        <li  class="active">
-                            <a  href="/sale/export" title="所有销售单" >所有销售单</a>
+                            <a  href="/manager/analysis/client" title="客户分析">客户分析</a>
                         </li>
                         <li>
-                            <a  href="/sale/export/add" title="创建销售单">创建销售单</a>
+                            <a  href="/manager/analysis/employee" title="员工业绩">员工业绩</a>
+                        </li>
+                        <li>
+                            <a  href="/manager/analysis/interest" title="利润分析">利润分析</a>
                         </li>
                     </ul>
                 </li>
@@ -135,8 +142,8 @@
     <!--main content start-->
     <section class="main-content-wrapper">
         <div class="pageheader">
-            <h1>销售管理</h1>
-            <p class="description">这里展示销售数据 </p>
+            <h1>业务管理</h1>
+            <p class="description">这里展示业务数据 </p>
         </div>
         <section id="main-content" class="animated fadeInUp">
             <div class="row">
@@ -151,82 +158,117 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 col-md-2 control-label" >单据编号</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" name="name" class="form-control" readonly="readonly" value={{$export->id}} >
+                            @if ($result)
+                                @if($form == "销售单")
+                                    <form class="form-horizontal">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 col-md-2 control-label" >单据编号</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="name" class="form-control" readonly="readonly" value={{$result->id}} >
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 col-md-2 control-label">进货商</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="name" class="form-control" readonly="readonly" value={{$result->clientname}} >
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 col-md-2 control-label">操作员</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="name" class="form-control" readonly="readonly" value={{$result->operatorname}} >
+                                                </div>
+                                            </div>
+                                            @if($result->type)
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 col-md-2 control-label">原始总价</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" name="name" class="form-control" readonly="readonly" value={{$result->initoverall}} >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 col-md-2 control-label">折让金额</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" name="name" class="form-control" readonly="readonly" value={{$result->discount}} >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 col-md-2 control-label">折让后总价</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" name="name" class="form-control" readonly="readonly" value={{$result->overall}} >
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 col-md-2 control-label">退货总额</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" name="name" class="form-control" readonly="readonly" value={{$result->overall}} >
+                                                    </div>
+                                                </div>
+                                            @endif
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 col-md-2 control-label">进货商</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" name="name" class="form-control" readonly="readonly" value={{$export->clientname}} >
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 col-md-2 control-label">操作员</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" name="name" class="form-control" readonly="readonly" value={{$export->operatorname}} >
-                                        </div>
-                                    </div>
-                                    @if($export->type)
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-2 control-label">原始总价</label>
-                                            <div class="col-sm-6">
-                                                <input type="text" name="name" class="form-control" readonly="readonly" value={{$export->initoverall}} >
+                                    </form>
+                                @endif
+                                @if($form == "进货单")
+                                    <form class="form-horizontal">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 col-md-2 control-label" >单据编号</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="name" class="form-control" readonly="readonly" value={{$result->id}} >
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 col-md-2 control-label">进货商</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="name" class="form-control" readonly="readonly" value={{$result->clientname}} >
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 col-md-2 control-label">操作员</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="name" class="form-control" readonly="readonly" value={{$result->operatorname}} >
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-2 control-label">折让金额</label>
-                                            <div class="col-sm-6">
-                                                <input type="text" name="name" class="form-control" readonly="readonly" value={{$export->discount}} >
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-2 control-label">折让后总价</label>
-                                            <div class="col-sm-6">
-                                                <input type="text" name="name" class="form-control" readonly="readonly" value={{$export->overall}} >
-                                            </div>
-                                        </div>
-                                        @else
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-2 control-label">退货总额</label>
-                                            <div class="col-sm-6">
-                                                <input type="text" name="name" class="form-control" readonly="readonly" value={{$export->overall}} >
-                                            </div>
-                                        </div>
-                                    @endif
-                                </div>
-                            </form>
+                                    </form>
+                                @endif
+                            @endif
                         </div>
                         <div class="panel-body">
                             <table class="table table-striped">
                                 <thead>
-                                <tr>
-                                    <td>商品编号</td>
-                                    <td>商品名称</td>
-                                    <td>型号</td>
-                                    <td>数量</td>
-                                    <td>单价</td>
-                                    <td>金额</td>
-                                </tr>
+                                @if($form == "销售单" || $form == "进货单")
+                                    <tr>
+                                        <td>商品编号</td>
+                                        <td>商品名称</td>
+                                        <td>型号</td>
+                                        <td>数量</td>
+                                        <td>单价</td>
+                                        <td>金额</td>
+                                    </tr>
+                                @endif
                                 </thead>
                                 <tbody>
-                                @if ($export)
+                                @if ($result)
                                     <tr>
                                         <td>{{ $com->id }}</td>
                                         <td>{{ $com->name }}</td>
                                         <td>{{ $com->type }}</td>
-                                        <td>{{ $export->number }}</td>
-                                        <td>{{ $com->avgout }}</td>
-                                        <td>{{ $export->initoverall }}</td>
+                                        <td>{{ $result->number }}</td>
+                                        @if($form == "销售单")
+                                            <td>{{ $com->avgout }}</td>
+                                            <td>{{ $result->initoverall }}</td>
+                                        @elseif($form == "进货单")
+                                            <td>{{ $com->avgin }}</td>
+                                            <td>{{ $result->overall }}</td>
+                                        @endif
                                     </tr>
                                 @else
                                     <div class="alert alert-danger alert-dismissable">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                        <strong>没有进货相关单据,请管理员添加</strong>
+                                        <strong>没有相关单据,请管理员添加</strong>
                                     </div>
                                 @endif
                                 </tbody>

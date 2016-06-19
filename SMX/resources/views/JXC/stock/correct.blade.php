@@ -160,7 +160,7 @@
                                                     </div>
                                                     <div class="col-md-7">
                                                         <div class="form-group">
-                                                            <input type="hidden" name="loss"  value="0" >
+                                                            <input type="hidden" name="loss"  value="1" >
                                                             <input type="hidden" name="status"  value="0" >
                                                             <label class="col-sm-3 control-label">商品名称</label>
                                                             <div class="col-sm-6">
@@ -282,7 +282,7 @@
                                                     </div>
                                                     <div class="col-md-7">
                                                         <div class="form-group">
-                                                            <input type="hidden" name="loss"  value="1" >
+                                                            <input type="hidden" name="loss"  value="0" >
                                                             <label class="col-sm-3 control-label">商品名称</label>
                                                             <div class="col-sm-6">
                                                                 <input type="text" name="name" class="form-control" placeholder="Commodity Name" >

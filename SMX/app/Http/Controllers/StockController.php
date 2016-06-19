@@ -34,8 +34,8 @@ class StockController extends Controller
 
     public function getCorrect()
     {
-        $stocklessforms = DB::select('select * from stockreportfroms where loss = ?', array(0));
-        $stockmoreforms = DB::select('select * from stockreportfroms where loss = ?', array(1));
+        $stocklessforms = DB::select('select * from stockreportfroms where loss = 1');
+        $stockmoreforms = DB::select('select * from stockreportfroms where loss = 0');
         return view('JXC.stock.correct', ['name' => Auth::user()->name, 'stocklessforms' => $stocklessforms ,'stockmoreforms' => $stockmoreforms]);
     }
 
