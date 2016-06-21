@@ -21,12 +21,15 @@ class AnalysisController extends Controller
     
     public function getClientAnalysis()
     {
-
+        $package = Package::find($id);
+        $commodityfirst = Commodity::find($package->commodityfirst);
+        $commoditysecond = Commodity::find($package->commoditysecond);
+        return view('JXC.manager.packageDetail',['package' => $package,'commodityfirst' => $commodityfirst,'commoditysecond' => $commoditysecond]);
     }
 
     public function getSaleAnalysis()
     {
-
+        return view('JXC.manager.packageDetail',['package' => $package,'commodityfirst' => $commodityfirst,'commoditysecond' => $commoditysecond]);
     }
 
     public function getCommodityAnalysis()

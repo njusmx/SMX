@@ -116,7 +116,7 @@
                     </ul>
                 </li>
                 <li class=" nav-dropdown ">
-                    <a href="/sale/export" title="业绩查看" >
+                    <a href="/manager/analysis/sale" title="业绩查看" >
                         <i class="fa  fa-fw fa-tachometer"></i>业绩查看
                     </a>
                     <ul class=" nav-sub">
