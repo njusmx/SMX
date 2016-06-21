@@ -150,7 +150,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h2  style="color: #fff;">商品销售量分析</h2>
+                            <h2  style="color: #fff;">商品历年销售量折线图</h2>
                             <div class="actions pull-right">
                                 <i class="fa fa-expand"></i>
                                 <i class="fa fa-chevron-down"></i>
@@ -161,54 +161,72 @@
                             <div class="col-md-12">
                                 <div class="panel panel-default">
 
-                                    <div class="panel-body">
-                                        <table class="table table-striped">
-                                            <thead>
-                                            <tr>
-                                                <td>编号</td>
-                                                <td>名称</td>
-                                                <td>型号</td>
-                                                <td>数量</td>
-                                                <td>进价</td>
-                                                <td>售价</td>
-                                                <td>操作</td>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @if (count($commodities))
-                                                @foreach ($commodities as $commodity)
-                                                    <tr>
-                                                        <td>{{ $commodity->id }}</td>
-                                                        <td>{{ $commodity->name }}</td>
-                                                        <td>{{ $commodity->type }}</td>
-                                                        <td>{{ $commodity->number }}</td>
-                                                        <td>{{ $commodity->avgin }}</td>
-                                                        <td>{{ $commodity->avgout }}</td>
-                                                        <td>
-                                                            <form action="{{ url('manager/analysis/sale/month/'.$commodity->id) }}" style='display: inline' method="post">
-                                                                <input type="hidden" name="_method" value="GET">
-                                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                <button class="btn btn-sm btn-info">查看月销售折线图</button>
-                                                            </form>
-                                                            <form action="{{ url('manager/analysis/sale/year/'.$commodity->id) }}" style='display: inline' method="post">
-                                                                <input type="hidden" name="_method" value="GET">
-                                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                <button class="btn btn-sm btn-danger">查看年销售折线图</button>
-                                                            </form>
-
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            @else
-                                                <div class="alert alert-danger alert-dismissable">
-                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                                    <strong>没有商品列表,请管理员添加</strong>
-                                                </div>
-                                            @endif
-                                            </tbody>
-                                        </table>
-
+                                    <div class="panel-body" id="commoditySale" style="height: 400px">
                                     </div>
+                                    <script src="{{ asset('js/echarts.js') }}"></script>
+                                    <script type="text/javascript">
+                                        var myChart = echarts.init(document.getElementById('commoditySale'));
+                                        var option = {
+                                            title : {
+                                                text: <?php echo json_encode($commodity->name) ?>
+                                            },
+                                            tooltip : {
+                                                trigger: 'axis'
+                                            },
+                                            legend: {
+                                                data:['销售量']
+                                            },
+                                            toolbox: {
+                                                show : true,
+                                                feature : {
+                                                    mark : {show: true},
+                                                    dataView : {show: true, readOnly: false},
+                                                    magicType : {show: true, type: ['line', 'bar']},
+                                                    restore : {show: true},
+                                                    saveAsImage : {show: true}
+                                                }
+                                            },
+                                            calculable : true,
+                                            xAxis : [
+                                                {
+                                                    type : 'category',
+                                                    boundaryGap : false,
+                                                    data: ['2011','2012','2013','2014','2015','2016']
+                                                }
+                                            ],
+                                            yAxis : [
+                                                {
+                                                    type : 'value',
+                                                    axisLabel : {
+                                                        formatter: '{value}'
+                                                    }
+                                                }
+                                            ],
+                                            series : [
+                                                {
+                                                    name:'当月销量',
+                                                    type:'line',
+                                                    data: (function () {
+                                                        var num = <?php echo json_encode($num) ?>;
+                                                        return num;
+                                                    })(),
+                                                    markPoint : {
+                                                        data : [
+                                                            {type : 'max', name: '最大值'},
+                                                            {type : 'min', name: '最小值'}
+                                                        ]
+                                                    },
+                                                    markLine : {
+                                                        data : [
+                                                            {type : 'average', name: '平均值'}
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        };
+                                        myChart.setOption(option);
+
+                                    </script>
 
                                 </div>
                             </div>
@@ -216,146 +234,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h2  style="color: #fff;">热销产品</h2>
-                            <div class="actions pull-right">
-                                <i class="fa fa-expand"></i>
-                                <i class="fa fa-chevron-down"></i>
-                                <i class="fa fa-times"></i>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
 
-                                    <div class="panel-body">
-                                        <table class="table table-striped">
-                                            <thead>
-                                            <tr>
-                                                <td>编号</td>
-                                                <td>名称</td>
-                                                <td>型号</td>
-                                                <td>数量</td>
-                                                <td>进价</td>
-                                                <td>售价</td>
-                                                <td>操作</td>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @if (count($hotten))
-                                                @foreach ($hotten as $hot)
-                                                    <tr>
-                                                        <td>{{ $hot->id }}</td>
-                                                        <td>{{ $hot->name }}</td>
-                                                        <td>{{ $hot->type }}</td>
-                                                        <td>{{ $hot->number }}</td>
-                                                        <td>{{ $hot->avgin }}</td>
-                                                        <td>{{ $hot->avgout }}</td>
-                                                        <td>
-                                                            <form action="{{ url('manager/analysis/sale/month/'.$hot->id) }}" style='display: inline' method="post">
-                                                                <input type="hidden" name="_method" value="GET">
-                                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                <button class="btn btn-sm btn-info">查看月销售折线图</button>
-                                                            </form>
-                                                            <form action="{{ url('manager/analysis/sale/year/'.$hot->id) }}" style='display: inline' method="post">
-                                                                <input type="hidden" name="_method" value="GET">
-                                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                <button class="btn btn-sm btn-danger">查看年销售折线图</button>
-                                                            </form>
-
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            @else
-                                                <div class="alert alert-danger alert-dismissable">
-                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                                    <strong>没有商品列表,请管理员添加</strong>
-                                                </div>
-                                            @endif
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h2  style="color: #fff;">冷门产品</h2>
-                            <div class="actions pull-right">
-                                <i class="fa fa-expand"></i>
-                                <i class="fa fa-chevron-down"></i>
-                                <i class="fa fa-times"></i>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-
-                                    <div class="panel-body">
-                                        <table class="table table-striped">
-                                            <thead>
-                                            <tr>
-                                                <td>编号</td>
-                                                <td>名称</td>
-                                                <td>型号</td>
-                                                <td>数量</td>
-                                                <td>进价</td>
-                                                <td>售价</td>
-                                                <td>操作</td>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @if (count($coldten))
-                                                @foreach ($coldten as $cold)
-                                                    <tr>
-                                                        <td>{{ $cold->id }}</td>
-                                                        <td>{{ $cold->name }}</td>
-                                                        <td>{{ $cold->type }}</td>
-                                                        <td>{{ $cold->number }}</td>
-                                                        <td>{{ $cold->avgin }}</td>
-                                                        <td>{{ $cold->avgout }}</td>
-                                                        <td>
-                                                            <form action="{{ url('manager/analysis/sale/month/'.$cold->id) }}" style='display: inline' method="post">
-                                                                <input type="hidden" name="_method" value="GET">
-                                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                <button class="btn btn-sm btn-info">查看月销售折线图</button>
-                                                            </form>
-                                                            <form action="{{ url('manager/analysis/sale/year/'.$cold->id) }}" style='display: inline' method="post">
-                                                                <input type="hidden" name="_method" value="GET">
-                                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                <button class="btn btn-sm btn-danger">查看年销售折线图</button>
-                                                            </form>
-
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            @else
-                                                <div class="alert alert-danger alert-dismissable">
-                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                                    <strong>没有商品列表,请管理员添加</strong>
-                                                </div>
-                                            @endif
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
 
     </section>
@@ -504,8 +383,8 @@
 <script src="{{ asset('assets/plugins/c3Chart/js/d3.v3.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/c3Chart/js/c3.js') }}"></script>
 <script src="{{ asset('assets/plugins/c3Chart/js/c3-V.js') }}"></script>
-<!--Load these page level functions-->
 
+<!--Load these page level functions-->
 </body>
 
 </html>

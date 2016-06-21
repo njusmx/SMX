@@ -7,6 +7,7 @@
  */
 namespace App\Http\Controllers;
 
+use App\Client;
 use App\Commodity;
 use App\Export;
 use App\Import;
@@ -27,7 +28,6 @@ class ManagerController extends Controller{
         $exports = DB::select('select * from exports');
         $stockreportforms = DB::select('select * from stockreportfroms');
         $form = "所有单据";
-//        return $form;
         return view('JXC.manager.index', ['name' => Auth::user()->name, 'imports' => $imports, 'exports' => $exports, 'stockreportforms' => $stockreportforms , 'form' => $form]);
     }
 
@@ -36,13 +36,42 @@ class ManagerController extends Controller{
         $id = $req->input('id');
         if($req->get('form') == "进货单据"){
             $target = Import::find($id);
+            $commodity = Commodity::find($target->commodityid);
+            $client = Client::find($target->clientid);
+            //进货
+            if($target->type == 1){
+                $commodity->number = $commodity->number + $target->number;//改库存
+                $commodity->numin = $commodity->numin + $target->number;//进货数量
+                $client->out = $client->out + $target->overall; //改应付
+            //进货退货
+            }else{
+                $commodity->number = $commodity->number - $target->number;//改库存
+                $commodity->numin = $commodity->numin - $target->number;//进货数量
+                $client->out = $client->out - $target->overall; //改应付
+            }
+
         }elseif($req->get('form') == "销售单据"){
             $target = Export::find($id);
+            $commodity = Commodity::find($target->commodityid);
+            $client = Client::find($target->clientid);
+            //销售
+            if($target->type == 1){
+                $commodity->number = $commodity->number - $target->number;//改库存
+                $commodity->numout = $commodity->numout + $target->number;//改售出数量
+                $client->in = $client->in + $target->overall; //改应收
+            //销售退货
+            }else{
+                $commodity->number = $commodity->number + $target->number;//改库存
+                $commodity->numout = $commodity->numout - $target->number;//改售出数量
+                $client->in = $client->in - $target->overall; //改应收
+            }
         }else{
             $target = Stockreportfroms::find($id);
         }
         $target->status=1;
         $target->save();
+        $commodity->save();
+        $client->save();
         return Redirect::route('manager');
     }
 

@@ -120,8 +120,13 @@ Route::get('manager/strategy/discount', 'StrategyController@getAddDiscount');
 Route::post('manager/strategy/discount', 'StrategyController@postAddDiscount');
 
 //业绩查看
-Route::get('manager/analysis/client', 'ManagerController@getClientAnalysis');
-Route::get('manager/analysis/sale', 'ManagerController@getSaleAnalysis');
-Route::get('manager/analysis/commodity', 'ManagerController@getCommodityAnalysis');
-Route::get('manager/analysis/employee', 'ManagerController@getEmployeeAnalysis');
-Route::get('manager/analysis/interest', 'ManagerController@getInterestAnalysis');
+Route::get('manager/analysis/client', 'AnalysisController@getClientAnalysis');
+
+Route::get('manager/analysis/sale', 'AnalysisController@getSaleAnalysis');
+Route::get('manager/analysis/sale/month/{id}', 'AnalysisController@getMonthSaleDetail');
+Route::post('manager/analysis/sale/month', 'AnalysisController@postMonthSaleDetail');
+Route::get('manager/analysis/sale/year/{id}', 'AnalysisController@getYearSaleDetail');
+
+Route::get('manager/analysis/commodity', 'AnalysisController@getCommodityAnalysis');
+Route::get('manager/analysis/employee', 'AnalysisController@getEmployeeAnalysis');
+Route::get('manager/analysis/interest', 'AnalysisController@getInterestAnalysis');
