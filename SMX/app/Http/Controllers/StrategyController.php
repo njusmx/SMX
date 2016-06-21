@@ -109,6 +109,7 @@ class StrategyController extends Controller
         $package->init = $commodityfirst[0]->numout * $req->get('numfirst') + $commoditysecond[0]->numout * $req->get('numsecond');
         $package->set = $req->get('set');
         $package->save();
+        StrategyController::updateScore(2,0);
         return Redirect::route('strategy');
     }
 
@@ -141,6 +142,7 @@ class StrategyController extends Controller
         $present->numsecond = $req->get('numsecond');
         $present->condition = $req->get('condition');
         $present->save();
+        StrategyController::updateScore(2,0);
         return Redirect::route('strategy');
     }
 
@@ -169,6 +171,7 @@ class StrategyController extends Controller
         $coupon->number = $req->get('number');
         $coupon->condition = $req->get('condition');
         $coupon->save();
+        StrategyController::updateScore(2,0);
         return Redirect::route('strategy');
     }
 
@@ -195,7 +198,18 @@ class StrategyController extends Controller
         $discount->commodityid = $req->get('commodityid');
         $discount->discount = $req->get('discount');
         $discount->save();
+        StrategyController::updateScore(2,0);
         return Redirect::route('strategy');
+    }
+
+    public function updateScore($score,$num){
+        $user = User::find(Auth::user()->id);
+        if($num == 0){
+        }else{
+            $score = $num / 1000;
+        }
+        $user->count=$user->count+$score;
+        $user->save();
     }
 
 

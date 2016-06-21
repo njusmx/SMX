@@ -31,6 +31,16 @@ class ManagerController extends Controller{
         return view('JXC.manager.index', ['name' => Auth::user()->name, 'imports' => $imports, 'exports' => $exports, 'stockreportforms' => $stockreportforms , 'form' => $form]);
     }
 
+    public function updateScore($score,$num){
+        $user = User::find(Auth::user()->id);
+        if($num == 0){
+        }else{
+            $score = $num / 1000;
+        }
+        $user->count=$user->count+$score;
+        $user->save();
+    }
+
     public function postApprove(Request $req)
     {
         $id = $req->input('id');
@@ -43,12 +53,22 @@ class ManagerController extends Controller{
                 $commodity->number = $commodity->number + $target->number;//改库存
                 $commodity->numin = $commodity->numin + $target->number;//进货数量
                 $client->out = $client->out + $target->overall; //改应付
-            //进货退货
+                ManagerController::updateScore(0,$target->overall);
+                //进货退货
             }else{
                 $commodity->number = $commodity->number - $target->number;//改库存
                 $commodity->numin = $commodity->numin - $target->number;//进货数量
                 $client->out = $client->out - $target->overall; //改应付
             }
+            if($client->in > 100000){
+                $client->level = 1;
+            }elseif($client->in < 100000 && $client->in > 10000){
+                $client->level = 2;
+            }else{
+                $client->level = 3;
+            }
+            $commodity->save();
+            $client->save();
 
         }elseif($req->get('form') == "销售单据"){
             $target = Export::find($id);
@@ -59,19 +79,29 @@ class ManagerController extends Controller{
                 $commodity->number = $commodity->number - $target->number;//改库存
                 $commodity->numout = $commodity->numout + $target->number;//改售出数量
                 $client->in = $client->in + $target->overall; //改应收
-            //销售退货
+                ManagerController::updateScore(0,$target->overall);
+                //销售退货
             }else{
                 $commodity->number = $commodity->number + $target->number;//改库存
                 $commodity->numout = $commodity->numout - $target->number;//改售出数量
                 $client->in = $client->in - $target->overall; //改应收
             }
+            if($client->in > 100000){
+                $client->level = 1;
+            }elseif($client->in < 100000 && $client->in > 10000){
+                $client->level = 2;
+            }else{
+                $client->level = 3;
+            }
+            $commodity->save();
+            $client->save();
         }else{
             $target = Stockreportfroms::find($id);
+            ManagerController::updateScore(2,0);
         }
         $target->status=1;
         $target->save();
-        $commodity->save();
-        $client->save();
+
         return Redirect::route('manager');
     }
 
