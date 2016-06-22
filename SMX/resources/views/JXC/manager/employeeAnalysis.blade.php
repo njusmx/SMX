@@ -120,13 +120,13 @@
                         <i class="fa  fa-fw fa-tachometer"></i>业绩查看
                     </a>
                     <ul class=" nav-sub">
-                        <li class="active">
+                        <li>
                             <a  href="/manager/analysis/sale" title="销售分析" >销售分析</a>
                         </li>
                         <li>
                             <a  href="/manager/analysis/client" title="客户分析">客户分析</a>
                         </li>
-                        <li>
+                        <li  class="active">
                             <a  href="/manager/analysis/employee" title="员工业绩">员工业绩</a>
                         </li>
                         <li>
@@ -150,7 +150,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h2  style="color: #fff;">商品销售量分析</h2>
+                            <h2  style="color: #fff;">员工业绩分析</h2>
                             <div class="actions pull-right">
                                 <i class="fa fa-expand"></i>
                                 <i class="fa fa-chevron-down"></i>
@@ -165,38 +165,45 @@
                                         <table class="table table-striped">
                                             <thead>
                                             <tr>
-                                                <td>编号</td>
+                                                <td>工号</td>
                                                 <td>名称</td>
-                                                <td>型号</td>
-                                                <td>数量</td>
-                                                <td>进价</td>
-                                                <td>售价</td>
+                                                <td>业绩点</td>
+                                                <td>职务</td>
                                                 <td>操作</td>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @if (count($commodities))
-                                                @foreach ($commodities as $commodity)
+                                            @if (count($users))
+                                                @foreach ($users as $user)
                                                     <tr>
-                                                        <td>{{ $commodity->id }}</td>
-                                                        <td>{{ $commodity->name }}</td>
-                                                        <td>{{ $commodity->type }}</td>
-                                                        <td>{{ $commodity->number }}</td>
-                                                        <td>{{ $commodity->avgin }}</td>
-                                                        <td>{{ $commodity->avgout }}</td>
-                                                        <td>
-                                                            <form action="{{ url('manager/analysis/sale/month/'.$commodity->id) }}" style='display: inline' method="post">
-                                                                <input type="hidden" name="_method" value="GET">
-                                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                <button class="btn btn-sm btn-info">查看月销售折线图</button>
-                                                            </form>
-                                                            <form action="{{ url('manager/analysis/sale/year/'.$commodity->id) }}" style='display: inline' method="post">
-                                                                <input type="hidden" name="_method" value="GET">
-                                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                <button class="btn btn-sm btn-danger">查看年销售折线图</button>
-                                                            </form>
 
-                                                        </td>
+                                                        @if($user->type == 1)
+                                                            <td>{{ $user->id }}</td>
+                                                            <td>{{ $user->name }}</td>
+                                                            <td>{{ $user->count }}</td>
+                                                            <td>库存管理人员</td>
+                                                            <td>
+                                                            </td>
+                                                        @elseif($user->type == 2)
+                                                            <td>{{ $user->id }}</td>
+                                                            <td>{{ $user->name }}</td>
+                                                            <td>{{ $user->count }}</td>
+                                                            <td>进货销售人员</td>
+                                                            <td>
+                                                                <form action="{{ url('manager/analysis/employee/month/'.$user->id) }}" style='display: inline' method="post">
+                                                                    <input type="hidden" name="_method" value="GET">
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <button class="btn btn-sm btn-info">查看月业绩折线图</button>
+                                                                </form>
+                                                                <form action="{{ url('manager/analysis/employee/year/'.$user->id) }}" style='display: inline' method="post">
+                                                                    <input type="hidden" name="_method" value="GET">
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <button class="btn btn-sm btn-danger">查看年业绩折线图</button>
+                                                                </form>
+
+                                                            </td>
+                                                        @endif
+
                                                     </tr>
                                                 @endforeach
                                             @else
@@ -235,12 +242,10 @@
                                         <table class="table table-striped">
                                             <thead>
                                             <tr>
-                                                <td>编号</td>
+                                                <td>工号</td>
                                                 <td>名称</td>
-                                                <td>型号</td>
-                                                <td>数量</td>
-                                                <td>进价</td>
-                                                <td>售价</td>
+                                                <td>业绩点</td>
+                                                <td>职务</td>
                                                 <td>操作</td>
                                             </tr>
                                             </thead>
@@ -248,25 +253,33 @@
                                             @if (count($hotten))
                                                 @foreach ($hotten as $hot)
                                                     <tr>
-                                                        <td>{{ $hot->id }}</td>
-                                                        <td>{{ $hot->name }}</td>
-                                                        <td>{{ $hot->type }}</td>
-                                                        <td>{{ $hot->number }}</td>
-                                                        <td>{{ $hot->avgin }}</td>
-                                                        <td>{{ $hot->avgout }}</td>
-                                                        <td>
-                                                            <form action="{{ url('manager/analysis/sale/month/'.$hot->id) }}" style='display: inline' method="post">
-                                                                <input type="hidden" name="_method" value="GET">
-                                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                <button class="btn btn-sm btn-info">查看月销售折线图</button>
-                                                            </form>
-                                                            <form action="{{ url('manager/analysis/sale/year/'.$hot->id) }}" style='display: inline' method="post">
-                                                                <input type="hidden" name="_method" value="GET">
-                                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                <button class="btn btn-sm btn-danger">查看年销售折线图</button>
-                                                            </form>
 
-                                                        </td>
+                                                        @if($hot->type == 1)
+                                                            <td>{{ $hot->id }}</td>
+                                                            <td>{{ $hot->name }}</td>
+                                                            <td>{{ $hot->count }}</td>
+                                                            <td>库存管理人员</td>
+                                                            <td></td>
+                                                        @elseif($hot->type == 2)
+                                                            <td>{{ $hot->id }}</td>
+                                                            <td>{{ $hot->name }}</td>
+                                                            <td>{{ $hot->count }}</td>
+                                                            <td>进货销售人员</td>
+                                                            <td>
+                                                                <form action="{{ url('manager/analysis/employee/month/'.$hot->id) }}" style='display: inline' method="post">
+                                                                    <input type="hidden" name="_method" value="GET">
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <button class="btn btn-sm btn-info">查看月业绩折线图</button>
+                                                                </form>
+                                                                <form action="{{ url('manager/analysis/employee/year/'.$hot->id) }}" style='display: inline' method="post">
+                                                                    <input type="hidden" name="_method" value="GET">
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <button class="btn btn-sm btn-danger">查看年业绩折线图</button>
+                                                                </form>
+
+                                                            </td>
+                                                        @endif
+
                                                     </tr>
                                                 @endforeach
                                             @else
@@ -316,32 +329,33 @@
                                             @if (count($coldten))
                                                 @foreach ($coldten as $cold)
                                                     <tr>
-                                                        <td>{{ $cold->id }}</td>
-                                                        <td>{{ $cold->name }}</td>
-                                                        <td>{{ $cold->count }}</td>
+
                                                         @if($cold->type == 1)
+                                                            <td>{{ $cold->id }}</td>
+                                                            <td>{{ $cold->name }}</td>
+                                                            <td>{{ $cold->count }}</td>
                                                             <td>库存管理人员</td>
+                                                            <td></td>
                                                         @elseif($cold->type == 2)
+                                                            <td>{{ $cold->id }}</td>
+                                                            <td>{{ $cold->name }}</td>
+                                                            <td>{{ $cold->count }}</td>
                                                             <td>进货销售人员</td>
-                                                        @elseif($cold->type == 3)
-                                                            <td>经理</td>
-                                                        @endid
+                                                            <td>
+                                                                <form action="{{ url('manager/analysis/employee/month/'.$cold->id) }}" style='display: inline' method="post">
+                                                                    <input type="hidden" name="_method" value="GET">
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <button class="btn btn-sm btn-info">查看月业绩折线图</button>
+                                                                </form>
+                                                                <form action="{{ url('manager/analysis/employee/year/'.$cold->id) }}" style='display: inline' method="post">
+                                                                    <input type="hidden" name="_method" value="GET">
+                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                                    <button class="btn btn-sm btn-danger">查看年业绩折线图</button>
+                                                                </form>
 
-                                                        <td>{{ $cold->avgin }}</td>
-                                                        <td>{{ $cold->avgout }}</td>
-                                                        <td>
-                                                            <form action="{{ url('manager/analysis/sale/month/'.$cold->id) }}" style='display: inline' method="post">
-                                                                <input type="hidden" name="_method" value="GET">
-                                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                <button class="btn btn-sm btn-info">查看月业绩折线图</button>
-                                                            </form>
-                                                            <form action="{{ url('manager/analysis/sale/year/'.$cold->id) }}" style='display: inline' method="post">
-                                                                <input type="hidden" name="_method" value="GET">
-                                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                                <button class="btn btn-sm btn-danger">查看年业绩折线图</button>
-                                                            </form>
+                                                            </td>
+                                                        @endif
 
-                                                        </td>
                                                     </tr>
                                                 @endforeach
                                             @else

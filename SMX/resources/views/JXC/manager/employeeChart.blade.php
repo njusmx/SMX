@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="{{ asset('/assets/plugins/switchery/switchery.min.css') }}">
     <!-- Custom styles for this theme -->
     <link rel="stylesheet" href="{{ asset('/assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css') }}">
     <!-- Feature detection -->
     <script src="{{ asset('/assets/js/vendor/modernizr-2.6.2.min.js') }}"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -126,10 +127,10 @@
                         <li>
                             <a  href="/manager/analysis/client" title="客户分析">客户分析</a>
                         </li>
-                        <li>
+                        <li  class="active">
                             <a  href="/manager/analysis/employee" title="员工业绩">员工业绩</a>
                         </li>
-                        <li  class="active">
+                        <li>
                             <a  href="/manager/analysis/interest" title="利润分析">利润分析</a>
                         </li>
                     </ul>
@@ -150,7 +151,7 @@
                 <div class="col-md-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h2  style="color: #fff;">月利润折线图</h2>
+                            <h2  style="color: #fff;">员工业绩折线图</h2>
                             <div class="actions pull-right">
                                 <i class="fa fa-expand"></i>
                                 <i class="fa fa-chevron-down"></i>
@@ -158,26 +159,18 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" method="POST" action="{{ url('manager/analysis/interest')}}">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ url('manager/analysis/employee/month')}}">
                                 <div class="col-md-1">
                                     <div class="form-group">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="id" value="{{$user->id}}">
                                     </div>
                                 </div>
                                 <div class="col-md-7">
                                     <div class="form-group">
-                                        <label for="clientname" class="col-sm-4 control-label">年份</label>
-                                        <div class="col-sm-6 col-md-6 col-lg-6">
-                                            <select name="year" class="form-control">
-                                                <option selected value={{$title}}>{{$title}}</option>
-                                                <option value="2016">2016</option>
-                                                <option value="2015">2015</option>
-                                                <option value="2014">2014</option>
-                                                <option value="2013">2013</option>
-                                                <option value="2012">2012</option>
-                                                <option value="2011">2011</option>
-
-                                            </select>
+                                        <label class="col-sm-4 control-label">年月</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="time" class="form-control form_datetime">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -187,168 +180,113 @@
                                     </div>
                                 </div>
                             </form>
-
                         </div>
                         <div class="panel-body">
                             <div class="col-md-12">
                                 <div class="panel panel-default">
 
-                                    <div class="panel-body" id="interest" style="height: 400px">
+                                    <div class="panel-body" id="employee" style="height: 400px">
                                     </div>
                                     <script src="{{ asset('js/echarts.min.js') }}"></script>
                                     <script type="text/javascript">
-                                        var myChart = echarts.init(document.getElementById('interest'));
+                                        var myChart = echarts.init(document.getElementById('employee'));
+
+                                        var timeData = <?php echo json_encode($time) ?>;
+
                                         var option = {
-                                            title : {
-                                                text: '年度每月利润统计折线图',
-                                                subtext: <?php echo json_encode($title) ?>
+                                            title: {
+                                                text: <?php echo json_encode($user->name) ?>,
                                             },
-                                            tooltip : {
-                                                trigger: 'axis'
-                                            },
-                                            legend: {
-                                                data:['利润']
-                                            },
-                                            toolbox: {
-                                                show : true,
-                                                feature : {
-                                                    mark : {show: true},
-                                                    dataView : {show: true, readOnly: false},
-                                                    magicType : {show: true, type: ['line', 'bar']},
-                                                    restore : {show: true},
-                                                    saveAsImage : {show: true}
+                                            tooltip: {
+                                                trigger: 'axis',
+                                                axisPointer: {
+                                                    animation: false
                                                 }
                                             },
-                                            calculable : true,
+                                            legend: {
+                                                data:['流量','降雨量'],
+                                                x: 'left'
+                                            },
+                                            dataZoom: [
+                                                {
+                                                    show: true,
+                                                    realtime: true,
+                                                    start: 0,
+                                                    end: 100,
+                                                    xAxisIndex: [0, 1]
+                                                },
+                                                {
+                                                    type: 'inside',
+                                                    realtime: true,
+                                                    start: 0,
+                                                    end: 100,
+                                                    xAxisIndex: [0, 1]
+                                                }
+                                            ],
+                                            grid: [{
+                                                left: 50,
+                                                right: 50,
+                                                height: '25%'
+                                            }, {
+                                                left: 50,
+                                                right: 50,
+                                                top: '55%',
+                                                height: '25%'
+                                            }],
                                             xAxis : [
                                                 {
                                                     type : 'category',
                                                     boundaryGap : false,
+                                                    axisLine: {onZero: true},
+                                                    data: timeData
+                                                },
+                                                {
+                                                    gridIndex: 1,
+                                                    type : 'category',
+                                                    boundaryGap : false,
+                                                    axisLine: {onZero: true},
+                                                    data: timeData,
+                                                    position: 'top'
+                                                }
+                                            ],
+                                            yAxis : [
+                                                {
+                                                    name : '进货流水',
+                                                    type : 'value'
+                                                },
+                                                {
+                                                    gridIndex: 1,
+                                                    name : '销售流水',
+                                                    type : 'value',
+                                                    inverse: true
+                                                }
+                                            ],
+                                            series : [
+                                                {
+                                                    name:'进货',
+                                                    type:'line',
+                                                    symbolSize: 8,
+                                                    hoverAnimation: false,
                                                     data: (function () {
-                                                        var time = <?php echo json_encode($time) ?>;
-                                                        return time;
+                                                        var num = <?php echo json_encode($import) ?>;
+                                                        return num;
                                                     })()
-                                                }
-                                            ],
-                                            yAxis : [
+                                                },
                                                 {
-                                                    type : 'value',
-                                                    axisLabel : {
-                                                        formatter: '{value}'
-                                                    }
-                                                }
-                                            ],
-                                            series : [
-                                                {
-                                                    name:'当月利润',
+                                                    name:'销售',
                                                     type:'line',
+                                                    xAxisIndex: 1,
+                                                    yAxisIndex: 1,
+                                                    symbolSize: 8,
+                                                    hoverAnimation: false,
                                                     data: (function () {
-                                                        var num = <?php echo json_encode($num) ?>;
+                                                        var num = <?php echo json_encode($export) ?>;
                                                         return num;
                                                     })(),
-                                                    markPoint : {
-                                                        data : [
-                                                            {type : 'max', name: '最大值'},
-                                                            {type : 'min', name: '最小值'}
-                                                        ]
-                                                    },
-                                                    markLine : {
-                                                        data : [
-                                                            {type : 'average', name: '平均值'}
-                                                        ]
-                                                    }
                                                 }
                                             ]
                                         };
-                                        myChart.setOption(option);
 
-                                    </script>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h2  style="color: #fff;">历年利润折线图</h2>
-                            <div class="actions pull-right">
-                                <i class="fa fa-expand"></i>
-                                <i class="fa fa-chevron-down"></i>
-                                <i class="fa fa-times"></i>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-
-                                    <div class="panel-body" id="interestYear" style="height: 400px">
-                                    </div>
-                                    <script src="{{ asset('js/echarts.min.js') }}"></script>
-                                    <script type="text/javascript">
-                                        var myChart = echarts.init(document.getElementById('interestYear'));
-                                        var option = {
-                                            title : {
-                                                text: '历年利润折线图'
-                                            },
-                                            tooltip : {
-                                                trigger: 'axis'
-                                            },
-                                            legend: {
-                                                data:['利润']
-                                            },
-                                            toolbox: {
-                                                show : true,
-                                                feature : {
-                                                    mark : {show: true},
-                                                    dataView : {show: true, readOnly: false},
-                                                    magicType : {show: true, type: ['line', 'bar']},
-                                                    restore : {show: true},
-                                                    saveAsImage : {show: true}
-                                                }
-                                            },
-                                            calculable : true,
-                                            xAxis : [
-                                                {
-                                                    type : 'category',
-                                                    boundaryGap : false,
-                                                    data: ['2011','2012','2013','2014','2015','2016']
-                                                }
-                                            ],
-                                            yAxis : [
-                                                {
-                                                    type : 'value',
-                                                    axisLabel : {
-                                                        formatter: '{value}'
-                                                    }
-                                                }
-                                            ],
-                                            series : [
-                                                {
-                                                    name:'当年利润',
-                                                    type:'line',
-                                                    data: (function () {
-                                                        var num = <?php echo json_encode($yearnum) ?>;
-                                                        return num;
-                                                    })(),
-                                                    markPoint : {
-                                                        data : [
-                                                            {type : 'max', name: '最大值'},
-                                                            {type : 'min', name: '最小值'}
-                                                        ]
-                                                    },
-                                                    markLine : {
-                                                        data : [
-                                                            {type : 'average', name: '平均值'}
-                                                        ]
-                                                    }
-                                                }
-                                            ]
-                                        };
                                         myChart.setOption(option);
 
                                     </script>
@@ -359,6 +297,7 @@
                     </div>
                 </div>
             </div>
+
         </section>
 
     </section>
@@ -507,9 +446,23 @@
 <script src="{{ asset('assets/plugins/c3Chart/js/d3.v3.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/c3Chart/js/c3.js') }}"></script>
 <script src="{{ asset('assets/plugins/c3Chart/js/c3-V.js') }}"></script>
-
+<script src="{{ asset('bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js') }}"></script>
+<script>
+    $(".form_datetime").datetimepicker({
+        language:  'zh-CN',
+        format: 'yyyy-mm',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 3, //这里就设置了默认视图为年视图
+        minView: 3, //设置最小视图为年视图
+        forceParse: 0,
+    });
+</script>
 <!--Load these page level functions-->
 </body>
+
 
 </html>
 

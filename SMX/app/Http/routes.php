@@ -127,6 +127,10 @@ Route::get('manager/analysis/sale/month/{id}', 'AnalysisController@getMonthSaleD
 Route::post('manager/analysis/sale/month', 'AnalysisController@postMonthSaleDetail');
 Route::get('manager/analysis/sale/year/{id}', 'AnalysisController@getYearSaleDetail');
 
-Route::get('manager/analysis/commodity', 'AnalysisController@getCommodityAnalysis');
 Route::get('manager/analysis/employee', 'AnalysisController@getEmployeeAnalysis');
+Route::get('manager/analysis/employee/month/{id}', 'AnalysisController@getMonthEmployeeDetail');
+Route::post('manager/analysis/employee/month', 'AnalysisController@postMonthEmployeeDetail');
+Route::get('manager/analysis/employee/year/{id}', 'AnalysisController@getYearEmployeeDetail');
+
 Route::get('manager/analysis/interest', 'AnalysisController@getInterestAnalysis');
+Route::post('manager/analysis/interest', 'AnalysisController@getSpecificYearInterestAnalysis');

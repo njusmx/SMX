@@ -24,6 +24,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function scopeScoreMost($query){
+        return $query->orderBy('count','desc');
+    }
+
+    public function scopeScoreLeast($query){
+        return $query->orderBy('count','asc');
+    }
+
     protected static function rules()
     {
         return [
