@@ -204,7 +204,8 @@ class AnalysisController extends Controller
     {
         $user = User::find($req->get('id'));
         $time = [];
-        $num = [];
+        $import = [];
+        $export = [];
         for ($day = 0; $day < 30; $day++) {
             if($day < 9){
                 $ym = $req->get('time')."-0".(string)($day+1);
@@ -212,16 +213,14 @@ class AnalysisController extends Controller
                 $ym = $req->get('time')."-".(string)($day+1);
             }
             $condition = $ym."%";
-            if($user->type == 1){
-                $num[$day] = (integer)Import::where('operatorid','=',$req->get('id'))->where('created_at','LIKE',$condition)->sum('overall');
-
-            }elseif($user->type == 2){
-                $num[$day] = (integer)Export::where('operatorid','=',$req->get('id'))->where('created_at','LIKE',$condition)->sum('overall');
+            if($user->type == 2){
+                $import[$day] = (integer)Import::where('operatorid','=',$req->get('id'))->where('type','=',1)->where('created_at','LIKE',$condition)->sum('overall');
+                $export[$day] = (integer)Export::where('operatorid','=',$req->get('id'))->where('type','=',1)->where('created_at','LIKE',$condition)->sum('overall');
             }
             $time[$day] = $ym;
             $title = $req->get('time');
         }
-        return view('JXC.manager.employeeChart',['name' => Auth::user()->name, 'user' => $user, 'time' => $time, 'num' => $num, 'title' => $title]);
+        return view('JXC.manager.employeeChart',['name' => Auth::user()->name, 'user' => $user, 'time' => $time, 'import' => $import, 'export' => $export, 'title' => $title]);
     }
 
     public function getYearEmployeeDetail($id)

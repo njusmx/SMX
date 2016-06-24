@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/resources/views/JXC/manager/employeeChart.blade.php" description="show: true," line="211" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="5544bc00-c03d-47dd-935f-6236ab75d4f0" name="Default" comment="" />
     <ignored path="JXC.iws" />
@@ -32,16 +35,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnalysisController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AnalysisController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnalysisController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="712">
-              <caret line="96" column="36" selection-start-line="96" selection-start-column="36" selection-end-line="96" selection-end-column="36" />
+            <state relative-caret-position="435">
+              <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
               <folding>
                 <element signature="e#6#84#0#PHP" expanded="true" />
                 <element signature="e#119#134#0#PHP" expanded="true" />
-                <marker date="1466614420000" expanded="true" signature="3978:4003" ph="select * fro... commodities" />
-                <marker date="1466614420000" expanded="true" signature="6629:6648" ph="select * fro... users" />
+                <marker date="1466651494000" expanded="true" signature="3978:4003" ph="select * fro... commodities" />
+                <marker date="1466651494000" expanded="true" signature="6629:6648" ph="select * fro... users" />
               </folding>
             </state>
           </provider>
@@ -62,11 +65,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="clientAnalysis.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="clientAnalysis.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/clientAnalysis.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="279" column="79" selection-start-line="279" selection-start-column="79" selection-end-line="279" selection-end-column="79" />
+            <state relative-caret-position="157">
+              <caret line="278" column="75" selection-start-line="278" selection-start-column="75" selection-end-line="278" selection-end-column="75" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="employeeChart.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/employeeChart.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="275" column="62" selection-start-line="275" selection-start-column="62" selection-end-line="275" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -121,12 +134,12 @@
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/public/js/echarts.min.js" />
         <option value="$PROJECT_DIR$/resources/views/JXC/manager/employeeYearChart.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/JXC/manager/employeeChart.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/JXC/manager/employeeAnalysis.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/resources/views/JXC/manager/interestAnalysis.blade.php" />
         <option value="$PROJECT_DIR$/app/Client.php" />
         <option value="$PROJECT_DIR$/resources/views/JXC/manager/clientAnalysis.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/JXC/manager/employeeChart.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AnalysisController.php" />
       </list>
     </option>
@@ -149,8 +162,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="287" />
-    <option name="y" value="108" />
+    <option name="x" value="156" />
+    <option name="y" value="93" />
     <option name="width" value="1260" />
     <option name="height" value="797" />
   </component>
@@ -485,16 +498,16 @@
       <workItem from="1466330915629" duration="4435000" />
       <workItem from="1466335801335" duration="9813000" />
       <workItem from="1466402103025" duration="14596000" />
-      <workItem from="1466525321702" duration="23637000" />
+      <workItem from="1466525321702" duration="24454000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140280000" />
+    <option name="totallyTimeSpent" value="141097000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="287" y="108" width="1260" height="797" extended-state="0" />
-    <editor active="true" />
+    <frame x="156" y="93" width="1260" height="797" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24920635" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -833,14 +846,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/employeeChart.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="211" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="469" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/strategy.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -973,24 +978,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnalysisController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/clientAnalysis.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="712">
-          <caret line="96" column="36" selection-start-line="96" selection-start-column="36" selection-end-line="96" selection-end-column="36" />
-          <folding>
-            <element signature="e#6#84#0#PHP" expanded="true" />
-            <element signature="e#119#134#0#PHP" expanded="true" />
-            <marker date="1466614420000" expanded="true" signature="3978:4003" ph="select * fro... commodities" />
-            <marker date="1466614420000" expanded="true" signature="6629:6648" ph="select * fro... users" />
-          </folding>
+        <state relative-caret-position="157">
+          <caret line="278" column="75" selection-start-line="278" selection-start-column="75" selection-end-line="278" selection-end-column="75" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/clientAnalysis.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/JXC/manager/employeeChart.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="279" column="79" selection-start-line="279" selection-start-column="79" selection-end-line="279" selection-end-column="79" />
+        <state relative-caret-position="135">
+          <caret line="275" column="62" selection-start-line="275" selection-start-column="62" selection-end-line="275" selection-end-column="62" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AnalysisController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+          <folding>
+            <element signature="e#6#84#0#PHP" expanded="true" />
+            <element signature="e#119#134#0#PHP" expanded="true" />
+            <marker date="1466651494000" expanded="true" signature="3978:4003" ph="select * fro... commodities" />
+            <marker date="1466651494000" expanded="true" signature="6629:6648" ph="select * fro... users" />
+          </folding>
         </state>
       </provider>
     </entry>
